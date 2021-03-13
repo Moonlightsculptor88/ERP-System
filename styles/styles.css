@@ -127,13 +127,43 @@ body {
 .panel-body{
   padding: 10px;
   background-color: #212529;
-  height: 200px;
   color: white;
   font-family: 'Times New Roman', Times, serif;
   font-size: 18px;
   margin: auto;
-  text-align: center;
+  height: 240px;
 }
+
+
+
+.student-card{
+  position: relative;
+  color: black;
+  background-color: white;
+  height: 95%;
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  display: flex;
+}
+
+
+
+.student-img{
+  position: absolute;
+  height: 160px;
+  width: 160px;
+  right: 2px;
+}
+.more-info{
+  margin-left: 20px;
+}
+
+
+ul{
+  list-style: circle;
+}
+
 
 
 

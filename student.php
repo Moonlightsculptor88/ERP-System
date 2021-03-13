@@ -24,79 +24,245 @@ require_once 'navbar.php';
 <!-- Recently visited -->
 
 <div class="container">
-        <div class="row">
+     <div class="row">
             <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
-                  <div class="panel-body">Student 1</div>
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Nivedi Singhal
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic">
+                    <img class="student-img" src="./img/person.png" alt="some">
+                  </div>
+                  </div>
+                 
+                </div>
+                 
                 </div>
             </div>
-            <div class="col-lg-6  panel-pad-10"> 
+            <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
-                  <div class="panel-body">Student 2</div>
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Nivedi Singhal fidnoadf aoidfbng
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic">
+                    <img class="student-img" src="./img/person.png" alt="some">
+                  </div>
                 </div>
             </div>
-            
-            
         </div>
-        
-    
-     </div>
-     <div class="container">
-        <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default ">
-                  <div class="panel-body ">Student 3</div>
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10"> 
-                <div class="panel panel-default">
-                  <div class="panel-body">Student 4</div>
-                </div>
-            </div>
-
-    
-    </div>
      </div>
 
 
      <div class="container">
-        <div class="row">
+     <div class="row">
             <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
-                  <div class="panel-body">Student 5</div>
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Nivedi Singhal
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic">
+                    <img class="student-img" src="./img/person.png" alt="some">
+                  </div>
+                  </div>
+                 
+                </div>
+                 
                 </div>
             </div>
-            <div class="col-lg-6  panel-pad-10"> 
+            <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
-                  <div class="panel-body">Student 6</div>
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Nivedi Singhal
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic ">
+                    <img class="student-img " src="./img/person.png" alt="some">
+                  </div>
                 </div>
             </div>
+        </div>
+     </div>
+    
+    
+     
 
-            <div class="container">
-        <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">Student 7</div>
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10"> 
-                <div class="panel panel-default">
-                  <div class="panel-body">Student 8</div>
-                </div>
-            </div>
 
-            <div class="container">
-        <div class="row">
+     <div class="container">
+     <div class="row">
             <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
-                  <div class="panel-body">Student 9</div>
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Nivedi Singhal
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic">
+                    <img class="student-img" src="./img/person.png" alt="some">
+                  </div>
+                  </div>
+                 
+                </div>
+                 
                 </div>
             </div>
-            <div class="col-lg-6  panel-pad-10"> 
+            <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
-                  <div class="panel-body">Student 10</div>
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Nivedi Singhal
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic">
+                    <img class="student-img" src="./img/person.png" alt="some">
+                  </div>
                 </div>
             </div>
+        </div>
+     </div>
+
+           <div class="container">
+     <div class="row">
+            <div class="col-lg-6  panel-pad-10">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Nivedi Singhal
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic ">
+                    <img class="student-img" src="./img/person.png" alt="some">
+                  </div>
+                  </div>
+                 
+                </div>
+                 
+                </div>
+            </div>
+            <div class="col-lg-6  panel-pad-10">
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Anapalli Mahi Pritam Reddy 
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                  </ul>
+                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                </div>
+                  
+                  <div class="student-pic">
+                    <img class="student-img" src="./img/person.png" alt="some">
+                  </div>
+                </div>
+            </div>
+        </div>
+     </div>
 
             <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
