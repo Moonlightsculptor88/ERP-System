@@ -11,7 +11,7 @@
     <title>ERP System</title>
   </head>
   <body>
-    <div class="card" style="width: 20rem;">
+    <div class="card card-login" style="width: 20rem;">
         <img src="./img/logo.png" class="card-img-top" alt="...">
         <div class="card-body d-flex justify-content-center">
             <form action="...">

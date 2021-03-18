@@ -21,7 +21,7 @@ require_once 'sidebar.php';
 <?php
 require_once 'navbar.php';
 ?>
-<!-- Recently visited -->
+
 
 <div class="container">
      <div class="row">
