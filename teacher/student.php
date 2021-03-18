@@ -21,7 +21,7 @@ require_once 'navbar.php';
 ?>
 
 <div>
-    <button class="btn btn-outline-dark add-lect-btn">Add Lecturer</button>
+    <button class="btn btn-outline-dark add-lect-btn">Add Student</button>
 </div>
 
 <div class="container lect-container">

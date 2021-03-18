@@ -6,15 +6,21 @@ if (isset($_POST['add'])) {
   $name=$_POST['name'];
   $email=$_POST['email'];
   $dob=$_POST['dob'];
-  $dept=$_POST['dept'];
+  $batch=$_POST['batch'];
+  $branch=$_POST['branch'];
+  $section=$_POST['section'];
+  $reg=$_POST['reg'];
 
 $data=[
   'name'=>$name,
   'email'=>$email,
   'dob'=>$dob,
-  'dept'=>$dept
+  'batch'=>$batch,
+  'branch'=>$branch,
+  'section'=>$section,
+  'reg'=>$reg
 ];
-$ref="teacher/";
+$ref="student/";
 $postdata = $database->getReference($ref)->push($data);
 
 if ($postdata) {
@@ -64,11 +70,15 @@ require_once 'navbar.php';
   <input type="text" class="form-control" placeholder="yourmail@gmail.com" aria-label="Username" aria-describedby="basic-addon1" name="email">
 </div>
 <div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Department</label>
-  <select name="dept" class="form-select" id="inputGroupSelect01">
+  <span class="input-group-text" id="basic-addon1">Batch</span>
+  <input type="text" class="form-control" placeholder="2007" aria-label="Username" aria-describedby="basic-addon1" name="batch">
+</div>
+<div class="input-group mb-3">
+  <label class="input-group-text" for="inputGroupSelect01">Branch</label>
+  <select name="branch" class="form-select" id="inputGroupSelect01">
    <!--<option value="0">Choose...</option>-->
     <?php
-    $ref1="dept/";
+    $ref1="branch/";
     $fetchdata=$database->getReference($ref1)->getValue();
     foreach ($fetchdata as $key => $row) {
     ?>
@@ -79,7 +89,14 @@ require_once 'navbar.php';
   ?>
   </select>
 </div>
-
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Section</span>
+  <input type="text" class="form-control" placeholder="C" aria-label="Username" aria-describedby="basic-addon1" name="section">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Registration Number</span>
+  <input type="text" class="form-control" placeholder="189301049" aria-label="Username" aria-describedby="basic-addon1" name="reg">
+</div>
 <div class="d-grid gap-2 col-2 mx-auto">
   <button name="add" class="btn btn-primary" type="submit">Submit</button>
   
