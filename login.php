@@ -3,9 +3,6 @@
 session_start();
 require_once 'includes/config.php';
 
-if (isset($_SESSION['status'])) {
-    echo $_SESSION['status'];
-}
 
 if (isset($_POST['login'])) {
     $ref="admin/";
@@ -13,7 +10,7 @@ if (isset($_POST['login'])) {
 
 foreach ($fetchdata as $key => $row) {
     if($_POST['email']==$row['id'] && $_POST['Password']==$row['password']){
-        $_SESSION['status']="loggedin";
+        $_SESSION['id']=$key;
         header('Location:admin/index.php');
        // break;
     }
@@ -23,7 +20,7 @@ $ref1="student/";
     $fetchdata1=$database->getReference($ref1)->getValue();
     foreach ($fetchdata1 as $key => $row) {
     if($_POST['email']==$row['reg'] && $_POST['Password']==$row['dob']){
-        $_SESSION['status']="loggedin";
+        $_SESSION['id']=$key;
         header('Location:student/index.php');
        // break;
     }
@@ -33,7 +30,7 @@ $ref1="teacher/";
     $fetchdata2=$database->getReference($ref1)->getValue();
     foreach ($fetchdata2 as $key => $row) {
     if($_POST['email']==$row['email'] && $_POST['Password']==$row['dob']){
-        $_SESSION['status']="loggedin";
+        $_SESSION['id']=$key;
         header('Location:teacher/index.php');
        // break;
     }

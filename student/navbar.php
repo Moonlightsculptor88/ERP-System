@@ -7,7 +7,7 @@
     <form class="d-flex ">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success nav-btn btn-light" type="submit">Search</button>
-        <button class="btn btn-outline-success nav-btn btn-light btn-outline-danger" type="submit">Logout</button>
+      <a href="../logout.php">  <button class="btn btn-outline-success nav-btn btn-light btn-outline-danger" type="submit">Logout</button></a>
       </form>
     
       
