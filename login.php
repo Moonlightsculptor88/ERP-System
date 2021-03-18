@@ -1,3 +1,51 @@
+<?php
+//session_unset();
+session_start();
+require_once 'includes/config.php';
+
+if (isset($_SESSION['status'])) {
+    echo $_SESSION['status'];
+}
+
+if (isset($_POST['login'])) {
+    $ref="admin/";
+    $fetchdata=$database->getReference($ref)->getValue();
+
+foreach ($fetchdata as $key => $row) {
+    if($_POST['email']==$row['id'] && $_POST['Password']==$row['password']){
+        $_SESSION['status']="loggedin";
+        header('Location:admin/index.php');
+       // break;
+    }
+    
+}
+$ref1="student/";
+    $fetchdata1=$database->getReference($ref1)->getValue();
+    foreach ($fetchdata1 as $key => $row) {
+    if($_POST['email']==$row['reg'] && $_POST['Password']==$row['dob']){
+        $_SESSION['status']="loggedin";
+        header('Location:student/index.php');
+       // break;
+    }
+    
+}
+$ref1="teacher/";
+    $fetchdata2=$database->getReference($ref1)->getValue();
+    foreach ($fetchdata2 as $key => $row) {
+    if($_POST['email']==$row['email'] && $_POST['Password']==$row['dob']){
+        $_SESSION['status']="loggedin";
+        header('Location:teacher/index.php');
+       // break;
+    }
+    
+}
+if (!isset($_SESSION['status'])) {
+    echo "<script>alert('Your credentials are invaid')</script>";
+//header('Location:index.php');
+}
+}
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,17 +55,17 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="./styles/styles.css" rel="stylesheet">
+    <link href="admin/styles/styles.css" rel="stylesheet">
     <title>ERP System</title>
   </head>
   <body>
     <div class="card card-login" style="width: 20rem;">
         <img src="./img/logo.png" class="card-img-top" alt="...">
         <div class="card-body d-flex justify-content-center">
-            <form action="...">
-                <input class="form-control login-form " type="email" placeholder="LoginID" name="email">
+            <form method="post">
+                <input class="form-control login-form " type="text" placeholder="LoginID" name="email">
                 <input class="form-control login-form " type="password" placeholder="Password" name="Password">
-                <input class="btn btn-outline-success login-btn" type="submit">
+                <input class="btn btn-outline-success login-btn" type="submit" name="login">
             </form>
         </div>
       </div>
