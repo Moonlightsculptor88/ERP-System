@@ -21,8 +21,15 @@ require_once 'sidebar.php';
 <?php
 require_once 'navbar.php';
 ?>
-<!-- Recently visited -->
+<div class="container"> <div class="d-grid gap-2 col-2 mx-auto">
+  
+  <button class="btn btn-primary" style="margin-top:50px" type="button">Request LOR</button>
+</div></div>
+  
 
+
+     
+     
 
      
      </div>

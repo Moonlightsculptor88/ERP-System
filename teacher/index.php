@@ -21,68 +21,14 @@ require_once 'sidebar.php';
 <?php
 require_once 'navbar.php';
 ?>
-<!-- Recently visited -->
 
-<div class="container">
-        <div class="row">
-            <div class="col-lg-4  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 1</div>
-                </div>
-            </div>
-            <div class="col-lg-4  panel-pad-10"> 
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 2</div>
-                </div>
-            </div>
-            <div class="col-lg-4 panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 3</div>
-                </div>
-            </div>
-        </div>
-        
-    
-     </div>
-     <div class="container">
-        <div class="row">
-            <div class="col-lg-4  panel-pad-10">
-                <div class="panel panel-default ">
-                  <div class="panel-body ">Recently visited 4</div>
-                </div>
-            </div>
-            <div class="col-lg-4  panel-pad-10"> 
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 5</div>
-                </div>
-            </div>
-            <div class="col-lg-4  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 6</div>
-                </div>
-            </div>
-        
-        
-    </div>
-     </div>
-     <div class="container">
-        <div class="row">
-            <div class="col-lg-4  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 7</div>
-                </div>
-            </div>
-            <div class="col-lg-4  panel-pad-10"> 
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 8</div>
-                </div>
-            </div>
-            <div class="col-lg-4  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">Recently visited 9</div>
-                </div>
-            </div>
-        </div>
+<div class="container"> <div class="d-grid gap-2 col-2 mx-auto">
+  
+  <button class="btn btn-primary" style="margin-top:50px" type="button">Check Requests</button>
+</div></div>
+      
+
+
         
     
      
