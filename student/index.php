@@ -1,4 +1,13 @@
+<?php
+session_start();
+if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+          header('Location:../login.php');
 
+}
+echo $_SESSION['id'];
+
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -23,7 +32,7 @@ require_once 'navbar.php';
 ?>
 <div class="container"> <div class="d-grid gap-2 col-2 mx-auto">
   
-  <button class="btn btn-primary" style="margin-top:50px" type="button">Request LOR</button>
+ <a href="lor-page.php"> <button class="btn btn-primary" style="margin-top:50px" type="button">Request LOR</button></a>
 </div></div>
   
 

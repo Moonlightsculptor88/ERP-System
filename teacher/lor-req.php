@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+require_once '../includes/config.php';
+?>
 
 <!doctype html>
 <html lang="en">
@@ -24,30 +27,46 @@ require_once 'navbar.php';
 <div class="container display-list" style="padding-top:50px;">
 
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action " aria-current="true">
+  <?php
+    $ref1="request/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    foreach ($fetchdata as $key => $row) {
+    ?>
+    <a href="lor-details.php?id=<?php echo $key;?>" class="list-group-item list-group-item-action " aria-current="true">
     <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Name idhar</h5>
-      <small>3 days ago</small>
+      <h5 class="mb-1"><?php
+ $ref2="student/".$row['student_id']."/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+    echo $fetchdata2['name'];
+
+?></h5>
+      <small><?php echo $row['date'];?></small>
     </div>
-    <p class="mb-1">Dept and year idhar</p>
-    <small>Internship details idhar</small>
+    <p class="mb-1"><?php
+ $ref3="branch/".$fetchdata2['branch']."/";
+ //echo $ref3;
+    $fetchdata3=$database->getReference($ref3)->getValue();
+    echo $fetchdata3['name'];
+    echo " ";
+    echo $fetchdata2['batch'];
+?></p>
+    <small><?php echo $row['info'];?></small>
   </a>
-  <a href="#" class="list-group-item list-group-item-action">
+    <?php
+
+  }
+  ?>
+  
+ <!-- <a href="#" class="list-group-item list-group-item-action">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">List group item heading</h5>
       <small class="text-muted">3 days ago</small>
     </div>
     <p class="mb-1">Some placeholder content in a paragraph.</p>
     <small class="text-muted">And some muted small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-muted">And some muted small print.</small>
-  </a>
+  </a>-->
+  
 </div>
 
 

@@ -1,4 +1,45 @@
+<?php
+session_start();
+require_once '../includes/config.php';
 
+if (isset($_POST['add'])) {
+  $student=$_SESSION['id'];
+  $dept=$_POST['dept'];
+  $lect=$_POST['lect'];
+  $purpose=$_POST['purpose'];
+  $info=$_POST['info'];
+
+  $uniquesavename=time().uniqid(rand());
+$filename = $uniquesavename.$_FILES['uploadfile']['name'];
+$tempname = $_FILES['uploadfile']['tmp_name'];
+$folder = "uploads/".$filename;
+if (move_uploaded_file($tempname, $folder)) {
+  echo "Image uploaded successfully";
+}else {
+  echo "Failed to upload image";
+}
+$flag=0;
+$date=date("Y-m-d");
+
+  $data=[
+  'student_id'=>$student,
+  'dept'=>$dept,
+  'teacher_id'=>$lect,
+  'purpose'=>$purpose,
+  'file'=>$filename,
+  'info'=>$info,
+  'flag'=>$flag,
+  'date'=>$date
+];
+$ref="request/";
+$postdata = $database->getReference($ref)->push($data);
+
+if ($postdata) {
+  echo "<script>alert('Request Sent')</script>";
+
+}
+}
+?>
 
 <!doctype html>
 <html lang="en">
@@ -24,8 +65,8 @@ require_once 'navbar.php';
 
 <div class="container add-container">
 <h3 class="add-heading">Enter Details</h3>
-<form method="post">
-  <div class="input-group mb-3">
+<form method="post" enctype="multipart/form-data">
+  <!--<div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">Name</span>
   <input type="text" class="form-control" placeholder="First Name - Last Name" aria-label="Username" aria-describedby="basic-addon1" name="name">
 </div>
@@ -36,30 +77,51 @@ require_once 'navbar.php';
 <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">Email</span>
   <input type="text" class="form-control" placeholder="yourmail@gmail.com" aria-label="Username" aria-describedby="basic-addon1" name="email">
-</div>
+</div>-->
 <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Department</label>
   <select name="dept" class="form-select" id="inputGroupSelect01">
    <!--<option value="0">Choose...</option>-->
+<?php
+    $ref1="dept/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    foreach ($fetchdata as $key => $row) {
+    ?>
+    <option value=<?php echo $key;?>><?php echo $row['name']; ?></option>
+    <?php
 
+  }
+  ?>
   </select>
 </div>
 <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Lecturer</label>
-  <select name="dept" class="form-select" id="inputGroupSelect01">
-   <!--<option value="0">Choose...</option>-->
+  <select name="lect" class="form-select" id="inputGroupSelect01">
+   <?php
+    $ref1="teacher/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    foreach ($fetchdata as $key => $row) {
+    ?>
+    <option value=<?php echo $key;?>><?php echo $row['name']; ?></option>
+    <?php
+
+  }
+  ?>
 
   </select>
 </div>
-
+<div class="input-group mb-3">
+  <!--<span class="input-group-text" id="basic-addon1"></span>-->
+  <input type="file" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="uploadfile">
+</div>
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Interships or Research papers</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea name="info" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
 
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Purpose of LOR</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea name="purpose" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
 
 <div class="d-grid gap-2 col-2 mx-auto">

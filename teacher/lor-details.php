@@ -1,3 +1,20 @@
+<?php
+session_start();
+require_once '../includes/config.php';
+
+ $ref1="request/".$_GET['id']."/";
+ //echo $ref2;
+    $fetchdata1=$database->getReference($ref1)->getValue();
+    //echo $fetchdata2['name'];
+
+
+ $ref2="student/".$fetchdata1['student_id']."/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+    
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,7 +45,7 @@ require_once 'navbar.php';
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item "><a href="#" class="black">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Student name</li>
+    <li class="breadcrumb-item active" aria-current="page"><?php echo $fetchdata2['name'];?></li>
   </ol>
 </nav> 
 
@@ -38,19 +55,25 @@ require_once 'navbar.php';
   <h5 class="card-header"><div >
                   <div class="student-card">
                     <div><ul>
-                    <li>Name: Anapalli Mahi Pritam Reddy 
+                    <li><?php echo $fetchdata2['name'];?> 
                     </li>
                     <li>
-                      Reg-No: 189301049
+                      Reg-No: <?php echo $fetchdata2['reg'];?>
                     </li>
                     <li>
-                      Branch: CSE
+                      Branch: <?php
+ $ref4="branch/".$fetchdata2['branch']."/";
+ //echo $ref3;
+    $fetchdata4=$database->getReference($ref4)->getValue();
+    echo $fetchdata4['name'];
+    
+?>
                     </li>
                     <li>
-                      Section: C
+                      Section: <?php echo $fetchdata2['section'];?>
                     </li>
                     <li>
-                      Year/batch:2018
+                      Year/batch:<?php echo $fetchdata2['batch'];?>
                     </li>
                   </ul>
                  
@@ -63,9 +86,9 @@ require_once 'navbar.php';
   <div class="card-body">
     
     
-    <p class="card-text">Info about internship here.</p>
-
-
+    <p class="card-text"><?php echo $fetchdata1['info']; ?></p>
+<p class="card-text"><?php echo $fetchdata1['purpose']; ?></p>
+<a href="../student/uploads/<?php echo $fetchdata1['file'];?>" target="_blank">View document uploaded</a>
     <button type="button" class="btn btn-primary btn-md">Issue LOR</button>
 <button type="button" class="btn btn-secondary btn-md">Reject LOR</button>
     
