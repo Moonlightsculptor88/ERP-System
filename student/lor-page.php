@@ -110,20 +110,20 @@ require_once 'navbar.php';
 
   </select>
 </div>
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Purpose Of LOR</label>
+  <textarea name="purpose" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Additional Details</label>
+  <textarea name="info" placeholder="Eg: I am planning on applying for masters in this course for so and so college for 2022-2024" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div><div class="form-label">Grade Card/Offer Letter</div>
 <div class="input-group mb-3">
-  <!--<span class="input-group-text" id="basic-addon1"></span>-->
+  
   <input type="file" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="uploadfile">
 </div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Interships or Research papers</label>
-  <textarea name="info" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Purpose of LOR</label>
-  <textarea name="purpose" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-
 <div class="d-grid gap-2 col-2 mx-auto">
   <button name="add" class="btn btn-primary lor-submit" type="submit">Submit</button>
   

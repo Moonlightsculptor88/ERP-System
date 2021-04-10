@@ -3,12 +3,13 @@
   <div class="container-fluid">
       
     <a class="navbar-brand" href="#"><span id="Manipal">Manipal</span><span id="uni">Uni</span></a>
-    <div class="search-bar">
+    <div class="search-bar d-flex">
     <form class="d-flex ">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success nav-btn btn-light" type="submit">Search</button>
-      <a href="../logout.php">  <button class="btn btn-outline-success nav-btn btn-light btn-outline-danger" type="submit">Logout</button></a>
-      </form>
+           </form>
+      <button onclick="location.href='../logout.php'"class="btn btn-outline-success nav-btn btn-light btn-outline-danger" type="submit">Logout</button>
+   
     
       
     </div>

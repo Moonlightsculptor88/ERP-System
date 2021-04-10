@@ -31,30 +31,44 @@ require_once 'navbar.php';
     $ref1="request/";
     $fetchdata=$database->getReference($ref1)->getValue();
     foreach ($fetchdata as $key => $row) {
-
-      if($row['teacher_id']==$_SESSION['id'] && $row['flag']==0){
+      
+//$p=$row['student_id'];
+//echo $row['student_id'];
+      if($row['flag']==1 ){
     ?>
-    <a href="lor-details.php?id=<?php echo $key;?>" class="list-group-item list-group-item-action " aria-current="true">
+    <div class="list-group-item list-group-item-action " aria-current="true">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1"><?php
- $ref2="student/".$row['student_id']."/";
+ $ref2="teacher/".$row['teacher_id']."/";
  //echo $ref2;
     $fetchdata2=$database->getReference($ref2)->getValue();
+    echo "Issued By: ";
     echo $fetchdata2['name'];
 
 ?></h5>
-      <small><?php echo $row['date'];?></small>
+
+      <small> Issued On <?php echo $row['issue_date'];?></small>
     </div>
-    <p class="mb-1"><?php
- $ref3="branch/".$fetchdata2['branch']."/";
- //echo $ref3;
-    $fetchdata3=$database->getReference($ref3)->getValue();
-    echo $fetchdata3['name'];
-    echo " ";
-    echo $fetchdata2['batch'];
-?></p>
-    <small><?php echo $row['info'];?></small>
-  </a>
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1"><?php
+ $ref4="student/".$row['student_id']."/";
+ //echo $ref2;
+    $fetchdata4=$database->getReference($ref4)->getValue();
+    echo "Issued To: ";
+    echo $fetchdata4['name'];
+
+?></h5>
+ <small> Requested On <?php echo $row['date'];?></small>
+    </div>
+    <div class="d-flex w-100 justify-content-between">
+    
+    <h6 class="mb-1"><?php echo $row['info'];?></h6>
+
+    <small> 
+     <button class="btn btn-primary" onclick="location.href='../teacher/lor/<?php echo $row['lor'];?>'" >View LOR </button>
+     
+      
+  </div>
     <?php
 
   }}

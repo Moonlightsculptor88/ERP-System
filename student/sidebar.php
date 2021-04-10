@@ -25,7 +25,9 @@
     <a href="#">Link 2</a>
     <a href="#">Link 3</a>
   </div>
-  
+  <button onclick="location.href='lor_status.php'" class="dropdown-btn">LOR
+   
+  </button>
 </div>
 
 <script>

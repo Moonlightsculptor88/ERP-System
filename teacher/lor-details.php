@@ -2,6 +2,22 @@
 session_start();
 require_once '../includes/config.php';
 
+
+if (isset($_POST['update'])) {
+  $reason=$_POST['reason'];
+  $id=$_GET['id'];
+  $flag=2;
+  $data=[
+  'flag'=>$flag,
+  'reason'=>$reason
+];
+$ref="request/".$id;
+$postdata = $database->getReference($ref)->update($data);
+if ($postdata) {
+  echo "<script>alert('LOR Rejected')</script>";
+
+}
+}
  $ref1="request/".$_GET['id']."/";
  //echo $ref2;
     $fetchdata1=$database->getReference($ref1)->getValue();
@@ -27,6 +43,12 @@ require_once '../includes/config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="./styles/styles.css" rel="stylesheet">
     <title>ERP System</title>
+    <style type="text/css">
+      
+      #reason{
+        margin-left: 20px;
+      }
+    </style>
   </head>
   <body>
   <?php
@@ -89,9 +111,15 @@ require_once 'navbar.php';
     <p class="card-text"><?php echo $fetchdata1['info']; ?></p>
 <p class="card-text"><?php echo $fetchdata1['purpose']; ?></p>
 <a href="../student/uploads/<?php echo $fetchdata1['file'];?>" target="_blank">View document uploaded</a>
-    <button type="button" class="btn btn-primary btn-md">Issue LOR</button>
-<button type="button" class="btn btn-secondary btn-md">Reject LOR</button>
-    
+    <button onclick="location.href='issue_lor.php?id=<?php echo $_GET['id']?>'" type="button" class="btn btn-primary btn-md">Issue LOR</button>
+<!--<button type="button" class="btn btn-secondary btn-md">Reject LOR</button>-->
+    <!-- Button trigger modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+
   </div>
 </div>
 
@@ -111,6 +139,27 @@ require_once 'navbar.php';
 
 
 </div>
-  
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reject LOR</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="post">
+      <div class="modal-body">
+        <label  for="reason">Reason For Rejecting</label>
+        
+        <input type="text" id="reason" name="reason">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="update" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
   </body>
 </html>
