@@ -55,9 +55,7 @@ if ($postdata) {
     <title>ERP System</title>
   </head>
   <body>
-  <?php
-require_once 'sidebar.php';
-?>
+ 
 <div id="full-page">
 <?php
 require_once 'navbar.php';

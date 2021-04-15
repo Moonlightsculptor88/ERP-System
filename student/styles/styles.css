@@ -1,7 +1,7 @@
 body {
     margin: 0;
     border:0;
-    background-color: #f1faee;
+    background-color:white;
 }
 
 #full-page{
@@ -161,7 +161,7 @@ body {
 
 
 ul{
-  list-style: circle;
+  list-style: none;
 }
 
 
@@ -256,6 +256,20 @@ ul{
 .login-btn:hover{
     background-color: #f1faee;
     color: green;
+}
+
+
+
+/* Student Details */
+
+.basic-details{
+  margin-top: 20px;
+  
+}
+
+.name-card{
+  background: linear-gradient(to right, grey , black);
+ 
 }
 
 

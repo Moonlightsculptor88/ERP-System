@@ -4,7 +4,7 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
           header('Location:../login.php');
 
 }
-echo $_SESSION['id'];
+// echo $_SESSION['id'];
 
 
 ?>
@@ -24,24 +24,46 @@ echo $_SESSION['id'];
   </head>
   <body>
   <?php
-require_once 'sidebar.php';
-?>
-<div id="full-page">
-<?php
 require_once 'navbar.php';
 ?>
-<div class="container"> <div class="d-grid gap-2 col-2 mx-auto">
+
+<div class="container basic-details">
+<div class="card stud-info-card name-card">
+  <h5 class="card-header"><div >
+                  <div class="student-card">
+                    <div><ul>
+                    <li>Name: Anapalli Mahi Pritam Reddy 
+                    </li>
+                    <li>
+                      Reg-No: 189301049
+                    </li>
+                    <li>
+                      Branch: CSE
+                    </li>
+                    <li>
+                      Section: C
+                    </li>
+                    <li>
+                      Batch: 2018
+                    </li>
+                  </ul>
+                 
+                </div>
+                  
+                  <div class="student-pic">
+                    <img class="student-info-img" src="./img/person.png" alt="some">
+                  </div>
+                </div>
   
- <a href="lor-page.php"> <button class="btn btn-primary" style="margin-top:50px" type="button">Request LOR</button></a>
-</div></div>
-  
+</div>
+
+</div>
 
 
-     
-     
 
-     
-     </div>
+
+
+
      
   
   </body>
