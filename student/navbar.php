@@ -1,5 +1,5 @@
 
-
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;900&family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>html, body {
       margin: 0;
@@ -15,7 +15,7 @@ body {
 header {
       width: 100%;
       height: 35vh;
-      background: linear-gradient(to right, grey , black);
+      background: linear-gradient(to right, #ff9966 , #ff5e62);
       background-size: cover;
 }
 
@@ -38,6 +38,11 @@ header {
       letter-spacing: 2px;
 }
 
+.manipal-logo{
+      height:50%;
+      width:50%;
+}
+
 nav {
       position: fixed;
       width: 100%;
@@ -58,8 +63,11 @@ nav ul {
 }
 
 nav.black ul {
-      background: #000;
+      background: linear-gradient(to right, #ff9966 , #ff5e62);
+      opacity: 0.9;
 }
+
+
 
 nav ul li {
       display: inline-block;
@@ -70,6 +78,11 @@ nav ul li a {
       text-decoration: none;
       color: #fff;
       font-size: 16px;
+      font-weight:700;
+}
+
+nav ul li a:hover{
+      color:black;
 }
 
 .menu-icon {
@@ -83,6 +96,26 @@ nav ul li a {
       color: #fff;
       display: none;
 }
+
+.main-nav-heading{
+            text-align: center;
+            color: #fff;
+            padding-top:17.5vh;
+
+      }
+
+.nav-manipal{
+      font-family: 'Montserrat', sans-serif;
+      font-weight:700;
+      font-size:3rem;
+      line-height: 1.5;
+      background: -webkit-linear-gradient(#C9D6FF, #EAEAEA);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+}
+
+
+
 
 @media(max-width: 786px) {
 
@@ -116,7 +149,11 @@ nav ul li a {
             display: block;
       }
 
+      
+
 }
+
+
 </style>
 
 
@@ -127,7 +164,7 @@ nav ul li a {
                   <i class="fa fa-bars fa-2x"></i>
                </div>
                <div class="logo">
-                  Manipal University
+                  <img class="manipal-logo" src="./img/logo.png" alt="">
                </div>
                <div class="menu">
                   <ul>
@@ -140,7 +177,10 @@ nav ul li a {
                   </ul>
                </div>
             </nav>
+            <div class="main-nav-heading" ><h1 class="nav-manipal">Manipal University</h1></div>
+            
          </header>
+         
       </div>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

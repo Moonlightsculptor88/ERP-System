@@ -162,6 +162,7 @@ body {
 
 ul{
   list-style: none;
+  
 }
 
 
@@ -172,9 +173,11 @@ ul{
 }
 
 .black{
-  color: black;
+  color: #616362;
   text-decoration: none;
 }
+
+
 
 
 
@@ -262,7 +265,7 @@ ul{
 
 /* Student Details */
 
-.basic-details{
+/* .basic-details{
   margin-top: 20px;
   
 }
@@ -270,6 +273,82 @@ ul{
 .name-card{
   background: linear-gradient(to right, grey , black);
  
+} */
+
+
+
+.basic-deets{
+  padding:3% 15%;
 }
 
+.text-deets{
+  padding: 1rem;
+  position: static;
+  background: linear-gradient(to right, #ff9966, #ff5e62);
+  padding: 3px;
+  font-size: 20px;
+  font-family: 'Oswald', sans-serif;
+  line-height: 1.5rem;
+  word-spacing: 2px;
+}
+
+.module {
+  background: #fff;
+  padding: 2rem;
+}
+
+
+.img-deets{
+  text-align: center;
+}
+
+.profile-img{
+  width: 35%;
+  height: 35%;
+}
+
+
+.internship-deets{
+  text-align: center;
+  background-color: #DAE0F5;
+  padding:3% 15%;
+}
+
+.full-internship-deets{
+  border: 2px solid black;
+  
+  
+}
+
+.add-internship-btn{
+  background-color:#DAE0F5 ;
+  font-size: 22px;
+ 
+}
+
+.add-internship-btn:hover{
+  background-color:#989EFF ;
+}
+
+.company-name{
+  font-size: larger;
+  font-weight: bold;
+}
+
+.working-date{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+.basic-internship-deets{
+  padding:3% 1%;
+  text-align: left;
+  
+}
+
+.internship-info{
+  text-align: left;
+  padding: 0vh 1vh;
+}
 
