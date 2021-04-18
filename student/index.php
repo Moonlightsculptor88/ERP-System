@@ -95,18 +95,45 @@ require_once 'navbar.php';
 <h1>Internship Details <!-- Button trigger modal -->
 <button type="button" class="btn add-internship-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
  +
-</button></h1>
+</button>
 
-<!-- Modal -->
+</h1>
+
+
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Enter Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <form action="">
+        <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Company Name</span>
+  <input type="text" class="form-control" placeholder="" aria-label="company-name" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Working Period</span>
+  <input type="text" class="form-control" placeholder="" aria-label="dates" aria-describedby="basic-addon1">
+</div>
+
+
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Position</span>
+  <input type="text" class="form-control" placeholder="" aria-label="Position" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group">
+  <span class="input-group-text">Details</span>
+  <textarea class="form-control" aria-label="details"></textarea>
+</div>
+
+
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -149,36 +176,13 @@ require_once 'navbar.php';
 
 
 
-
-
-
-
-
-
-
 </section>
 
 
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-     
   
   </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </html>
 
