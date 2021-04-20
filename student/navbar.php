@@ -128,6 +128,7 @@ nav ul li a:hover{
       nav ul {
             max-height: 0px;
             background: #000;
+            overflow: scroll;
       }
 
       nav.black ul {

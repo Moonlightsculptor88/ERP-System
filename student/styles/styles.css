@@ -310,7 +310,7 @@ ul{
 
 .internship-deets{
   text-align: center;
-  background-color: #DAE0F5;
+  background-color: #d4fcff;
   padding:3% 15%;
 }
 
@@ -321,9 +321,8 @@ ul{
 }
 
 .add-internship-btn{
-  background-color:#DAE0F5 ;
+  background-color:#c0fdff ;
   font-size: 22px;
- 
 }
 
 .add-internship-btn:hover{
@@ -352,3 +351,40 @@ ul{
   padding: 0vh 1vh;
 }
 
+
+.project-deets{
+  text-align: center;
+  background-color: #99f7f4;
+  padding:3% 15%;
+}
+
+.add-project-btn{
+  background-color:#99f7f4 ;
+  font-size: 22px;
+ 
+}
+
+.add-project-btn:hover{
+  background-color:#989EFF ;
+}
+
+.project-url a{
+  text-decoration: none;
+}
+
+.certificates{
+  text-align: center;
+  background-color: #d4fcff;
+
+  padding:3% 15%;
+
+}
+
+.add-certificates-btn{
+  background-color:#c0fdff ;
+  font-size: 22px;
+}
+
+.add-certificates-btn:hover{
+  background-color:#989EFF ;
+}
