@@ -1,11 +1,40 @@
 <?php
 session_start();
+require_once '../includes/config.php';
 if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
           header('Location:../login.php');
 
 }
+$ref2="student/".$_SESSION['id']."/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getValue();
 // echo $_SESSION['id'];
+$ref3="branch/".$fetchdata2['branch']."/";
+ //echo $ref2;
+    $fetchdata3=$database->getReference($ref3)->getValue();
 
+    if(isset($_POST['add'])){
+      if(isset($_POST['curr']) && $_POST['curr']=="yes"){
+        $end="current";
+      }else{
+        $end=$_POST['end-month'].",".$_POST['end-year'];
+      }
+      $data=[
+  'company'=>$_POST['company-name'],
+  'position'=>$_POST['pos'],
+  'details'=>$_POST['details'],
+  'start'=>$_POST['start-month'].",".$_POST['start-year'],
+  'end'=>$end
+];
+      /*$ref4="student/".$_SESSION['id']."/";
+$fetchdata4=$database->getReference($ref4)->getSnapshot();*/
+        $ref="student/".$_SESSION['id']."/internship";
+$postdata = $database->getReference($ref)->push($data);
+      
+      
+    }
+
+    
 
 ?>
 
@@ -67,11 +96,11 @@ require_once 'navbar.php';
 
               <div class="row" >
                 <div class="col-lg-6 text-deets">
-                  <div class="module">Name:     Anapalli Mahi Pritam Reddy <br>
-                                      Reg-No:   189301104 <br>
-                                      DOB:      01/01/2000 <br>
-                                      Batch:    2018 <br>
-                                      Branch:   CSE <br>
+                  <div class="module">Name:     <?php echo $fetchdata2['name'];?> <br>
+                                      Reg-No:   <?php echo $fetchdata2['reg'];?> <br>
+                                      DOB:      <?php echo $fetchdata2['dob'];?> <br>
+                                      Batch:    <?php echo $fetchdata2['batch'];?> <br>
+                                      Branch:   <?php echo $fetchdata3['name'];?> <br>
 
                 
                 </div>
@@ -103,68 +132,174 @@ require_once 'navbar.php';
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Enter Details</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form method="post">
       <div class="modal-body">
-        <form action="">
         <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">Company Name</span>
-  <input type="text" class="form-control" placeholder="" aria-label="company-name" aria-describedby="basic-addon1">
+  <input required type="text" name="company-name" class="form-control" placeholder="" aria-label="company-name" aria-describedby="basic-addon1">
 </div>
 
 <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">Working Period</span>
-  <input type="text" class="form-control" placeholder="" aria-label="dates" aria-describedby="basic-addon1">
+  <span class="input-group-text" id="basic-addon1">Start Date </span>
+  <select name="start-month" class="form-control" aria-label="start" aria-describedby="basic-addon1" >
+    <option value="Jaunary">January
+    </option>
+    <option value="February">February
+    </option>
+    <option value="March">March
+    </option>
+    <option value="April">April
+    </option>
+    <option value="May">May
+    </option>
+    <option value="June">June
+    </option>
+    <option value="July">July
+    </option>
+    <option value="August">August
+    </option>
+    <option value="September">September
+    </option>
+    <option value="October">October
+    </option>
+    <option value="November">November
+    </option>
+    <option value="December">December
+    </option>
+  </select>
+  <select name="start-year" class="form-control" aria-label="end" aria-describedby="basic-addon1" >
+    <?php 
+    $y=date("Y");
+    //echo $y;
+while($y>2000){
+  ?>
+  <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+  <?php
+  $y--;
+}
+    ?>
+
+  </select>
 </div>
+<div class="input-group mb-3">
+  <div class="form-check form-switch">
+  <input name="curr" value="yes" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" onclick="myFunction()" checked>
+  <label class="form-check-label" for="flexSwitchCheckChecked">Are You Currently Working here?</label>
+</div>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">End Date </span>
+  <select id="end-month" name="end-month" class="form-control" aria-label="start" aria-describedby="basic-addon1" disabled>
+    <option value="Jaunary">January
+    </option>
+    <option value="February">February
+    </option>
+    <option value="March">March
+    </option>
+    <option value="April">April
+    </option>
+    <option value="May">May
+    </option>
+    <option value="June">June
+    </option>
+    <option value="July">July
+    </option>
+    <option value="August">August
+    </option>
+    <option value="September">September
+    </option>
+    <option value="October">October
+    </option>
+    <option value="November">November
+    </option>
+    <option value="December">December
+    </option>
+  </select>
+  <select name="end-year" disabled id="end-year" class="form-control" aria-label="end" aria-describedby="basic-addon1" >
+    <?php 
+    $y=date("Y");
+    //echo $y;
+while($y>2000){
+  ?>
+  <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+  <?php
+  $y--;
+}
+    ?>
 
-
+  </select>
+</div>
 <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">Position</span>
-  <input type="text" class="form-control" placeholder="" aria-label="Position" aria-describedby="basic-addon1">
+  <input name="pos" type="text" class="form-control" placeholder="" aria-label="Position" aria-describedby="basic-addon1">
 </div>
 
 <div class="input-group">
-  <span class="input-group-text">Details</span>
-  <textarea class="form-control" aria-label="details"></textarea>
+  <span  class="input-group-text">Details</span>
+  <textarea name="details" class="form-control" aria-label="details"></textarea>
 </div>
 
 
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" name="add" class="btn btn-primary">Add</button>
       </div>
+    </form>
     </div>
   </div>
+
 </div>
 
 
+<?php
+$ref4="student/".$_SESSION['id']."/";
+$fetchdata4=$database->getReference($ref4)->getSnapshot();
 
+if($fetchdata4->hasChild("internship")){
+  $ref5="student/".$_SESSION['id']."/internship/";
+    $fetchdata5=$database->getReference($ref5)->getValue();
+    foreach($fetchdata5 as $key1=>$row){
+      
+?>
 <div class="full-internship-deets">
   <div class="row basic-internship-deets">
     <div class="col-lg-6 company-name">
-      GirlScript Foundations
+      <?php echo $row['company']; ?>
 
     </div>
     <div class="col-lg-6 working-date">
-      Jun-2020 to Sep-2020
+      <?php echo $row['start']; ?>
+      -
+      <?php echo $row['end']; ?>
+
+
 
     </div>
     <div class="col-lg-6 working-role">
-      Software Developer
+      <?php echo $row['position']; ?>
+
 
     </div>
 </div>
 <div class="internship-info">
- <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+ <p><?php echo $row['details']; ?>
+</p>
 
 </div></div>
+<?php
 
+}
+}
+?>
 
 </div>
 
@@ -185,4 +320,20 @@ require_once 'navbar.php';
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </html>
+<script type="text/javascript">
+
+  function myFunction() {
+if(document.getElementById('flexSwitchCheckChecked').checked) {
+    document.getElementById("end-year").disabled = true;
+    document.getElementById("end-month").disabled = true;
+} else{
+  document.getElementById("end-year").disabled = false;
+    document.getElementById("end-month").disabled = false;
+}
+
+  
+}
+  
+
+</script>
 
