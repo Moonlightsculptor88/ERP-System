@@ -1,6 +1,11 @@
 <?php
 session_start();
-require_once '../includes/config.php';
+require '../import-excel/vendor/autoload.php';
+include '../import-excel/excel_reader2.php';
+include '../includes/config.php';
+use Kreait\Firebase;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 if (isset($_POST['add'])) {
   $name=$_POST['name'];
@@ -27,6 +32,46 @@ if ($postdata) {
   echo "<script>alert('Data Inserted')</script>";
 }
 }
+
+if (isset($_POST['import'])) {
+  if (isset($_FILES['fileimport'])) {
+
+                $target = basename($_FILES['fileimport']['name']) ;
+                move_uploaded_file($_FILES['fileimport']['tmp_name'], $target);
+                
+                
+                chmod($_FILES['fileimport']['name'],0777);
+                
+                
+                $data = new Spreadsheet_Excel_Reader($_FILES['fileimport']['name'],false);
+                
+                
+                $count = $data->rowcount(0);
+                
+                for ($i=2; $i<=$count; $i++) {
+                    
+                    $reg    = $data->val($i, 1, 0);
+                    $name  = $data->val($i, 2, 0);
+                    $batch  = $data->val($i, 3, 0);
+                    $branch  = $data->val($i, 4, 0);
+                    $dob  = $data->val($i, 5, 0);
+                  $section  = $data->val($i, 6, 0);
+                    //Masukkan data hasil import ke firebase
+                    $database->getReference('student')->push([
+                        'reg' => $reg,
+                        'name' => $name,
+                        'batch' => $batch,
+                        'branch' => $branch,
+                        'dob' => $dob,
+                        'section' => $section,
+                        ]
+                    );
+                }
+    
+                unlink($_FILES['fileimport']['name']);
+            }
+            
+  }
 ?>
 
 <!doctype html>
@@ -108,7 +153,7 @@ require_once 'navbar.php';
 
 <div class="d-grid gap-2 col-2 mx-auto">
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Import From Excell
+  Import From Excel
 </button>
 
 <!-- Modal -->
@@ -116,23 +161,25 @@ require_once 'navbar.php';
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Import From Excel</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
       <div class="modal-body" style="text-align:center;">
-        <button class="btn btn-outline-dark">Download Template</button>
+        <button onclick="location.href='../import-excel/example_excel.xls'"class="btn btn-outline-dark">Download Template</button>
 
-        <form action="">
+        <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
   <label for="formFile" class="form-label"></label>
-  <input class="form-control" type="file" id="formFile">
+  <input name="fileimport" class="form-control" type="file" id="formFile" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
 </div>
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Import</button>
+        <button name="import" type="submit" class="btn btn-primary">Import</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
