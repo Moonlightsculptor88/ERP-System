@@ -56,6 +56,7 @@ if (isset($_POST['import'])) {
                     $branch  = $data->val($i, 4, 0);
                     $dob  = $data->val($i, 5, 0);
                   $section  = $data->val($i, 6, 0);
+                  $email  = $data->val($i, 7, 0);
                     //Masukkan data hasil import ke firebase
                     $database->getReference('student')->push([
                         'reg' => $reg,
@@ -64,6 +65,7 @@ if (isset($_POST['import'])) {
                         'branch' => $branch,
                         'dob' => $dob,
                         'section' => $section,
+                        'email' => $email,
                         ]
                     );
                 }
