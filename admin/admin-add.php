@@ -82,8 +82,38 @@ require_once 'navbar.php';
 
 <div class="d-grid gap-2 col-2 mx-auto">
   <button name="add" class="btn btn-primary" type="submit">Submit</button>
+  <div style="text-align:center;">
+<h5>or</h5>
+</div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Import From Excel
+</button>
   
-</div></form>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Import From Excel</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body" style="text-align:center;">
+        <button onclick="location.href='../import-excel/example_excel.xls'"class="btn btn-outline-dark">Download Template</button>
+
+        <form method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+  <label for="formFile" class="form-label"></label>
+  <input name="fileimport" class="form-control" type="file" id="formFile" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+</div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button name="import" type="submit" class="btn btn-primary">Import</button>
+      </div></form>
 
 </div>
 

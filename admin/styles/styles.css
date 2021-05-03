@@ -265,3 +265,68 @@ ul{
 }
 
 
+/* Student Details */
+
+
+
+.internship-deets{
+  margin-bottom: 25px;
+  text-align: center;
+  background-color: #fff;
+  padding:3% 5%;
+  width:82%;
+}
+
+.full-internship-deets{
+  border: 2px solid black;
+  margin:10px;
+  
+}
+
+.company-name{
+  font-size: medium;
+  font-weight: bold;
+}
+
+.working-role{
+  font-size: small;
+}
+
+.working-date{
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.basic-internship-deets{
+  padding:3% 1%;
+  text-align: left;
+  
+}
+
+.internship-info{
+  text-align: left;
+  font-size: smaller;
+  padding: 0vh 1vh;
+}
+
+
+.project-deets{
+  margin-bottom: 25px;
+  text-align: center;
+  background-color: #fff;
+  padding:3% 5%;
+  width:82%;
+}
+
+.project-url a{
+  text-decoration: none;
+}
+
+.certificates{
+  text-align: center;
+  background-color: #fff;
+  padding:3% 5%;
+  width:82%;
+
+}
+

@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="../student/styles/styles.css" rel="stylesheet">
+    
     <link href="./styles/styles.css" rel="stylesheet">
     <title>ERP System</title>
   </head>
@@ -64,11 +64,11 @@ require_once 'navbar.php';
     <div class="container-fluid internship-deets">
 
 
-      <h1>Internship Details
+      <h4>Internship Details
         <!-- Button trigger modal -->
         
 
-      </h1>
+      </h4>
      
       <div class="full-internship-deets">
         <div class="row basic-internship-deets">
@@ -123,11 +123,11 @@ require_once 'navbar.php';
     <div class="container-fluid project-deets">
 
 
-      <h1>Project Details
+      <h4>Project Details
         <!-- Button trigger modal -->
         
 
-      </h1>
+      </h4>
       
       <div class="full-internship-deets">
         <div class="row basic-internship-deets">
@@ -187,11 +187,11 @@ require_once 'navbar.php';
 <div class="container-fluid certificates">
 
 
-  <h1>Certificates
+  <h4>Certificates
     <!-- Button trigger modal -->
    
 
-  </h1>
+  </h4>
 
 
 
