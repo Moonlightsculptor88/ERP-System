@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../student/styles/styles.css" rel="stylesheet">
     <link href="./styles/styles.css" rel="stylesheet">
     <title>ERP System</title>
   </head>
@@ -59,16 +60,190 @@ require_once 'navbar.php';
                 </div>
   <div class="card-body">
     
-    <p class=>With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    
+    <section id="internship-details">
+    <div class="container-fluid internship-deets">
+
+
+      <h1>Internship Details
+        <!-- Button trigger modal -->
+        
+
+      </h1>
+     
+      <div class="full-internship-deets">
+        <div class="row basic-internship-deets">
+          <div class="col-lg-6 company-name">
+            hdh
+
+          </div>
+          <div class="col-lg-5 working-date">
+            dysb
+            -
+            hdhd
+
+
+          </div>
+
+          <div class="col-lg-1 float-right">
+            
+          
+
+          </div>
+
+
+          <div class="col-lg-6 working-role">
+            hddh
+
+
+          </div>
+        </div>
+        <div class="internship-info">
+          <p>hh
+          </p>
+
+        </div>
+      </div>
+      
+
+    </div>
+
+
+
+    <div>
+
+    </div>
+
+
+
+  </section>
+    <section id="Projects">
+
+
+
+    <div class="container-fluid project-deets">
+
+
+      <h1>Project Details
+        <!-- Button trigger modal -->
+        
+
+      </h1>
+      
+      <div class="full-internship-deets">
+        <div class="row basic-internship-deets">
+          <div class="col-lg-6 company-name">
+           huh
+
+          </div>
+          <div class="col-lg-5 working-date">
+            huj
+            -
+            hug
+
+
+
+          </div>
+          
+
+          <div class="col-lg-6 working-role">
+            bjhj
+
+           
+
+
+          </div>
+
+          <div class="col-lg-12 project-url">
+            
+            <a href="#">Project Url</a>
+
+
+          </div>
+        </div>
+
+        <div class="internship-info">
+          <p>jij
+          </p>
+
+        </div>
+      </div>
+      
+
+    </div>
+
+
+
+    <div>
+
+    </div>
+
+
+  </section>
+
+  <section id="Certificates">
+
+
+
+<div class="container-fluid certificates">
+
+
+  <h1>Certificates
+    <!-- Button trigger modal -->
+   
+
+  </h1>
+
+
+
+  
+  <div class="full-internship-deets">
+    <div class="row basic-internship-deets">
+      <div class="col-lg-6 company-name">
+        hu
+
+      </div>
+      <div class="col-lg-5 working-date">
+       hu
+        -
+        huhi
+
+
+
+      </div>
+      
+      <div class="col-lg-6 working-role">
+       gyugh
+
+        
+      </div>
+      <div class="col-lg-12 project-url">
+        
+        <a href="#">See Credential</a>
+
+
+        </div>
+        <div class="col-lg-6 working-role">
+       huh
+
+        
+      </div>
+    </div>
+
+   
+  </div>
+  
+
+</div>
+
+
+
+<div>
+
+</div>
+
+
+</section>
+
   </div>
 </div>
 
