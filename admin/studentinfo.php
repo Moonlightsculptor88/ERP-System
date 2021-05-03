@@ -1,3 +1,18 @@
+<?php
+session_start();
+require_once '../includes/config.php';
+
+$ref2="student/".$_GET['id']."/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+// echo $_SESSION['id'];
+$ref3="branch/".$fetchdata2['branch']."/";
+ //echo $ref2;
+    $fetchdata3=$database->getReference($ref3)->getValue();
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,7 +44,7 @@ require_once 'navbar.php';
 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item "><a href="#" class="black">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Student name</li>
+    <li class="breadcrumb-item active" aria-current="page"><?php echo $fetchdata2['name'];?></li>
   </ol>
 </nav> 
 
@@ -39,16 +54,22 @@ require_once 'navbar.php';
   <h5 class="card-header"><div >
                   <div class="student-card">
                     <div><ul>
-                    <li>Name: Anapalli Mahi Pritam Reddy 
+                    <li>Name: <?php echo $fetchdata2['name'];?>
                     </li>
                     <li>
-                      Reg-No: 189301049
+                      Reg-No: <?php echo $fetchdata2['reg'];?>
                     </li>
                     <li>
-                      Branch: CSE
+                      Branch: <?php echo $fetchdata3['name'];?>
                     </li>
                     <li>
-                      Section: C
+                      Section: <?php echo $fetchdata2['section'];?>
+                    </li>
+                    <li>
+                      DOB: <?php echo $fetchdata2['dob'];?>
+                    </li>
+                    <li>
+                      Batch: <?php echo $fetchdata2['batch'];?>
                     </li>
                   </ul>
                  
@@ -69,17 +90,26 @@ require_once 'navbar.php';
         
 
       </h4>
-     
+     <?php
+$ref4="student/".$_GET['id']."/";
+$fetchdata4=$database->getReference($ref4)->getSnapshot();
+
+if($fetchdata4->hasChild("internship")){
+  $ref5="student/".$_GET['id']."/internship/";
+    $fetchdata5=$database->getReference($ref5)->getValue();
+    foreach($fetchdata5 as $key1=>$row){
+      
+?>
       <div class="full-internship-deets">
         <div class="row basic-internship-deets">
           <div class="col-lg-6 company-name">
-            hdh
+             <?php echo $row['company']; ?>
 
           </div>
           <div class="col-lg-5 working-date">
-            dysb
+            <?php echo $row['start']; ?>
             -
-            hdhd
+            <?php echo $row['end']; ?>
 
 
           </div>
@@ -92,18 +122,24 @@ require_once 'navbar.php';
 
 
           <div class="col-lg-6 working-role">
-            hddh
+            <?php echo $row['position']; ?>
+
 
 
           </div>
         </div>
         <div class="internship-info">
-          <p>hh
+           <p><?php echo $row['details']; ?>
           </p>
-
         </div>
       </div>
-      
+       <?php
+
+}
+}else{
+  echo "None";
+}
+?>
 
     </div>
 
@@ -128,25 +164,32 @@ require_once 'navbar.php';
         
 
       </h4>
-      
+      <?php
+$ref7="student/".$_GET['id']."/";
+$fetchdata7=$database->getReference($ref7)->getSnapshot();
+
+if($fetchdata7->hasChild("projects")){
+$ref8="student/".$_GET['id']."/projects/";
+$fetchdata8=$database->getReference($ref8)->getValue();
+foreach($fetchdata8 as $key1=>$row){
+  ?>
       <div class="full-internship-deets">
         <div class="row basic-internship-deets">
           <div class="col-lg-6 company-name">
-           huh
+           <?php echo $row['project']; ?>
 
           </div>
           <div class="col-lg-5 working-date">
-            huj
+            <?php echo $row['start']; ?>
             -
-            hug
-
+            <?php echo $row['end']; ?>
 
 
           </div>
           
 
           <div class="col-lg-6 working-role">
-            bjhj
+            <?php echo $row['associated']; ?>
 
            
 
@@ -155,20 +198,23 @@ require_once 'navbar.php';
 
           <div class="col-lg-12 project-url">
             
-            <a href="#">Project Url</a>
+            <a href="<?php echo $row['project-url']; ?>">Project Url</a>
 
 
           </div>
         </div>
 
         <div class="internship-info">
-          <p>jij
+          <p><?php echo $row['details']; ?>
           </p>
-
         </div>
       </div>
-      
-
+<?php
+}
+}else{
+  echo "None";
+}
+?>
     </div>
 
 
@@ -194,36 +240,44 @@ require_once 'navbar.php';
   </h4>
 
 
+<?php
+$ref4="student/".$_GET['id']."/";
+$fetchdata4=$database->getReference($ref4)->getSnapshot();
 
+if($fetchdata4->hasChild("certificates")){
+$ref9="student/".$_GET['id']."/certificates/";
+$fetchdata9=$database->getReference($ref9)->getValue();
+foreach($fetchdata9 as $key1=>$row){
+  ?>
   
   <div class="full-internship-deets">
     <div class="row basic-internship-deets">
       <div class="col-lg-6 company-name">
-        hu
+        <?php echo $row['title']; ?>
 
       </div>
       <div class="col-lg-5 working-date">
-       hu
+       <?php echo $row['start']; ?>
         -
-        huhi
+        <?php echo $row['end']; ?>
 
 
 
       </div>
       
       <div class="col-lg-6 working-role">
-       gyugh
-
+       <?php echo $row['issued-by']; ?>
         
       </div>
       <div class="col-lg-12 project-url">
         
-        <a href="#">See Credential</a>
+        <a href="<?php echo $row['certificate-url']; ?>">See Credential</a>
 
 
         </div>
         <div class="col-lg-6 working-role">
-       huh
+       <?php echo $row['id']; ?>
+
 
         
       </div>
@@ -231,7 +285,12 @@ require_once 'navbar.php';
 
    
   </div>
-  
+  <?php
+}
+}else{
+  echo "None";
+}
+  ?>
 
 </div>
 

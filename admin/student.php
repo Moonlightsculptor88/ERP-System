@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+require_once '../includes/config.php';
+?>
 
 <!doctype html>
 <html lang="en">
@@ -25,24 +28,32 @@ require_once 'navbar.php';
 
 <div class="container">
      <div class="row">
+      <?php
+$ref2="student/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+    foreach($fetchdata2 as $key1=>$row){
+      $ref3="branch/".$row['branch']."/";
+ //echo $ref2;
+    $fetchdata3=$database->getReference($ref3)->getValue();
+      ?>
             <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
                   <div class="panel-body">
                   <div class="student-card">
                     <div><ul>
-                    <li>Name: Nivedi Singhal
+                    <li>Name:  <?php echo $row['name']; ?>
                     </li>
                     <li>
-                      Reg-No: 189301049
+                      Reg-No:  <?php echo $row['reg']; ?>
+                    <li>
+                      Branch:  <?php echo $fetchdata3['name']; ?>
                     </li>
                     <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
+                      Section:  <?php echo $row['section']; ?>
                     </li>
                   </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                  <button onclick="location.href='studentinfo.php?id=<?php echo $key1;?>'" type="button" class="btn btn-primary more-info">More Info</button>
                 </div>
                   
                   <div class="student-pic">
@@ -54,216 +65,25 @@ require_once 'navbar.php';
                  
                 </div>
             </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Nivedi Singhal fidnoadf aoidfbng
-                    </li>
-                    <li>
-                      Reg-No: 189301049
-                    </li>
-                    <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
+            <?php
+
+          }
+          ?>
+            
 
 
-     <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Nivedi Singhal
-                    </li>
-                    <li>
-                      Reg-No: 189301049
-                    </li>
-                    <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Nivedi Singhal
-                    </li>
-                    <li>
-                      Reg-No: 189301049
-                    </li>
-                    <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic ">
-                    <img class="student-img " src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
+     
     
     
      
 
 
-     <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Nivedi Singhal
-                    </li>
-                    <li>
-                      Reg-No: 189301049
-                    </li>
-                    <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Nivedi Singhal
-                    </li>
-                    <li>
-                      Reg-No: 189301049
-                    </li>
-                    <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
+     
+            
 
-           <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Nivedi Singhal
-                    </li>
-                    <li>
-                      Reg-No: 189301049
-                    </li>
-                    <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic ">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Anapalli Mahi Pritam Reddy 
-                    </li>
-                    <li>
-                      Reg-No: 189301049
-                    </li>
-                    <li>
-                      Branch: CSE
-                    </li>
-                    <li>
-                      Section: C
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
-
+           
+            
+            
             <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item ">
@@ -288,7 +108,7 @@ require_once 'navbar.php';
     
 
 </div>
-  
+  </div>
   </body>
 </html>
 
