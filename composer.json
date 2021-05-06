@@ -2,5 +2,10 @@
     "name": "erp/erpsystem",
     "description": "This is a project",
     "type": "project",
-    "require": {}
+    "require": {},
+    "post-install-cmd": [
+        "php artisan clear-compiled",
+        "chmod -R 777 public/"
+    ]
 }
+
