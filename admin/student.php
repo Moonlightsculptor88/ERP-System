@@ -25,7 +25,7 @@ require_once 'sidebar.php';
 require_once 'navbar.php';
 ?>
 
-
+<h1>Hello</h1>
 <div class="container">
      <div class="row">
       <?php
