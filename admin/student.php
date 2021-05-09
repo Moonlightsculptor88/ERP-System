@@ -11,7 +11,7 @@ require_once '../includes/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-   
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="./styles/styles.css" rel="stylesheet">
@@ -27,7 +27,7 @@ require_once 'navbar.php';
 ?>
 
 <div class="container filter-row">
-  
+
 <h3>Filter:</h3>
 
 <div class="dropdown">
@@ -104,35 +104,35 @@ $ref2="student/";
                   </ul>
                   <button onclick="location.href='studentinfo.php?id=<?php echo $key1;?>'" type="button" class="btn btn-primary more-info">More Info</button>
                 </div>
-                  
+
                   <div class="student-pic">
                     <img class="student-img" src="./img/person.png" alt="some">
                   </div>
                   </div>
-                 
+
                 </div>
-                 
+
                 </div>
             </div>
             <?php
 
           }
           ?>
-            
 
 
-     
-    
-    
-     
 
 
-     
-            
 
-           
-            
-            
+
+
+
+
+
+
+
+
+
+
             <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item ">
@@ -152,14 +152,13 @@ $ref2="student/";
     </li>
   </ul>
 </nav>
-            
-        
-    
+
+
+
 
 </div>
   </div>
-  
-  </body>
-  
-</html>
 
+  </body>
+
+</html>
