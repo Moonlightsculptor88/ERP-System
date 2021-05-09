@@ -2,6 +2,7 @@ body {
     margin: 0;
     border:0;
     background-color: #f1faee;
+    /* background-image: url("https://www.transparenttextures.com/patterns/cubes.png"); */
 }
 
 #full-page{
@@ -164,6 +165,19 @@ ul{
   list-style: circle;
 }
 
+.filter-row{
+  margin-top: 40px;
+  display: flex;
+}
+
+.filter-row h3{
+  margin-right:30px;
+}
+
+.filter-dropdown{
+  background-color: rgb(212, 212, 212);
+  margin: 0px 20px;
+}
 
 /* Student info page */
 
