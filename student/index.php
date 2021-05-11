@@ -1,10 +1,8 @@
 <?php
 session_start();
 require_once '../includes/config.php';
-if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
-          header('Location:../login.php');
+require_once 'session.php';
 
-}
 $ref2="student/".$_SESSION['id']."/";
  //echo $ref2;
     $fetchdata2=$database->getReference($ref2)->getValue();
@@ -19,10 +17,41 @@ $ref3="branch/".$fetchdata2['branch']."/";
       }else{
         $end=$_POST['end-month'].",".$_POST['end-year'];
       }
+      
+      $uniquesavename=time().uniqid(rand());
+$filename = $uniquesavename.$_FILES['offer']['name'];
+$tempname = $_FILES['offer']['tmp_name'];
+$folder = "uploads/".$filename;
+if (move_uploaded_file($tempname, $folder)) {
+  echo "Image uploaded successfully";
+}else {
+  echo "Failed to upload image";
+}
+
+
+if (strlen($_FILES['certificate']['name'])>2) {
+        $uniquesavename=time().uniqid(rand());
+$filename1 = $uniquesavename.$_FILES['certificate']['name'];
+$tempname = $_FILES['certificate']['tmp_name'];
+$folder = "uploads/".$filename1;
+if (move_uploaded_file($tempname, $folder)) {
+  echo "Image uploaded successfully";
+}else {
+  echo "Failed to upload image";
+}
+
+      }
+      else{
+        $filename1="-";
+}
+
       $data=[
+      
   'company'=>$_POST['company-name'],
+  'offer-letter'=>$filename,
   'position'=>$_POST['pos'],
   'details'=>$_POST['details'],
+  'certificate'=>$filename1,
   'start'=>$_POST['start-month'].",".$_POST['start-year'],
   'end'=>$end
 ];
@@ -61,9 +90,21 @@ if(isset($_POST['add-certi'])){
       }else{
         $end=$_POST['end-month-certi'].",".$_POST['end-year-certi'];
       }
+
+      if($_POST['issue']=="Other"){
+        $data1=[
+  'name'=>$_POST['other']
+];
+
+$ref1="organization/";
+$postdata = $database->getReference($ref1)->push($data1);
+        $issue=$_POST['other'];
+      }else{
+        $issue=$_POST['issue'];
+      }
       $data=[
   'title'=>$_POST['title'],
-  'issued-by'=>$_POST['issue'],
+  'issued-by'=>$issue,
   'certificate-url'=>$_POST['certi-url'],
   'id'=>$_POST['credential'],
   'start'=>$_POST['start-month-certi'].",".$_POST['start-year-certi'],
@@ -83,12 +124,30 @@ $postdata = $database->getReference($ref)->push($data);
       }else{
         $end=$_POST['end-month'].",".$_POST['end-year'];
       }
+
+if (strlen($_FILES['certificate']['name'])>2) {
+        $uniquesavename=time().uniqid(rand());
+$filename1 = $uniquesavename.$_FILES['certificate']['name'];
+$tempname = $_FILES['certificate']['tmp_name'];
+$folder = "uploads/".$filename1;
+if (move_uploaded_file($tempname, $folder)) {
+  echo "Image uploaded successfully";
+}else {
+  echo "Failed to upload image";
+}
+
+      }
+      else{
+        $filename1=$_POST['h-certi'];
+}
+
       $data=[
   'company'=>$_POST['company-name'],
   'position'=>$_POST['pos'],
   'details'=>$_POST['details'],
   'start'=>$_POST['start-month'].",".$_POST['start-year'],
-  'end'=>$end
+  'end'=>$end,
+  'certificate'=>$filename1
 ];
       /*$ref4="student/".$_SESSION['id']."/";
 $fetchdata4=$database->getReference($ref4)->getSnapshot();*/
@@ -127,9 +186,22 @@ $postdata = $database->getReference($ref)->update($data);
       }else{
         $end=$_POST['end-month-certi'].",".$_POST['end-year-certi'];
       }
+
+      if($_POST['issue']=="Other"){
+        $data1=[
+  'name'=>$_POST['other']
+];
+
+$ref1="organization/";
+$postdata = $database->getReference($ref1)->push($data1);
+        $issue=$_POST['other'];
+      }else{
+        $issue=$_POST['issue'];
+      }
+
       $data=[
   'title'=>$_POST['title'],
-  'issued-by'=>$_POST['issue'],
+  'issued-by'=>$issue,
   'certificate-url'=>$_POST['certi-url'],
   'id'=>$_POST['credential'],
   'start'=>$_POST['start-month-certi'].",".$_POST['start-year-certi'],
@@ -143,6 +215,43 @@ $postdata = $database->getReference($ref)->update($data);
       
     }
 
+    if(isset($_POST['edit-offer'])){
+$uniquesavename=time().uniqid(rand());
+$filename = $uniquesavename.$_FILES['offer']['name'];
+$tempname = $_FILES['offer']['tmp_name'];
+$folder = "uploads/".$filename;
+if (move_uploaded_file($tempname, $folder)) {
+  echo "Image uploaded successfully";
+}else {
+  echo "Failed to upload image";
+}
+
+$data=[
+  'offer-letter'=>$filename,
+  ];
+
+  $ref="student/".$_SESSION['id']."/internship/".$_POST['id']."/";
+$postdata = $database->getReference($ref)->update($data);
+    }
+
+if(isset($_POST['edit-c'])){
+$uniquesavename=time().uniqid(rand());
+$filename = $uniquesavename.$_FILES['certificate']['name'];
+$tempname = $_FILES['certificate']['tmp_name'];
+$folder = "uploads/".$filename;
+if (move_uploaded_file($tempname, $folder)) {
+  echo "Image uploaded successfully";
+}else {
+  echo "Failed to upload image";
+}
+
+$data=[
+  'certificate'=>$filename,
+  ];
+
+  $ref="student/".$_SESSION['id']."/internship/".$_POST['id']."/";
+$postdata = $database->getReference($ref)->update($data);
+    }
 ?>
 
 <!doctype html>
@@ -220,7 +329,7 @@ require_once 'navbar.php';
               <h5 class="modal-title" id="exampleModalLabel">Enter Details</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
               <div class="modal-body">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">Company Name</span>
@@ -327,9 +436,21 @@ while($y>2000){
                     aria-describedby="basic-addon1">
                 </div>
 
-                <div class="input-group">
+                <div class="input-group mb-3">
                   <span class="input-group-text">Details</span>
                   <textarea name="details" class="form-control" aria-label="details"></textarea>
+                </div>
+                
+<div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Offer Letter</span>
+                  <input required name="offer" type="file" class="form-control" placeholder="" aria-label="Position"
+                    aria-describedby="basic-addon1">
+                </div>
+
+                <div style="display: none;" class="input-group mb-3" id="c">
+                  <span class="input-group-text" id="basic-addon1">Certificate</span>
+                  <input id="certificate" name="certificate" type="file" class="form-control" placeholder="" aria-label="Position"
+                    aria-describedby="basic-addon1">
                 </div>
 
 
@@ -502,10 +623,17 @@ while($y>2000){
                     aria-describedby="basic-addon1">
                 </div>
 
-                <div class="input-group">
+                <div class="input-group mb-3">
                   <span class="input-group-text">Details</span>
                   <textarea name="details" class="form-control" aria-label="details"><?php echo $row['details']; ?>
 </textarea>
+
+                </div>
+                <input type="hidden" name="h-certi" value="<?php echo $row['certificate'];?>">
+                <div style="display: none;" class="input-group mb-3 " id="ci<?php echo $key1 ?>">
+                  <span class="input-group-text">Certificate</span>
+                  <input name="certificate" type="file" class="form-control" placeholder="" aria-label="Position"
+                    aria-describedby="basic-addon1">
                 </div>
 
 
@@ -533,6 +661,75 @@ while($y>2000){
         <div class="internship-info">
           <p><?php echo $row['details']; ?>
           </p>
+
+        </div>
+        <div class="internship-info">
+          <a target="_blank" href="uploads/<?php echo $row['offer-letter'];?>">See Offer Letter</a>
+           <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal-of<?php echo $key1; ?>">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </button>
+         <div class="modal fade" id="exampleModal-of<?php echo $key1; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-of<?php echo $key1; ?>" aria-hidden="true">
+
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Offer Letter</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" enctype="multipart/form-data">
+              <div class="modal-body"> 
+<div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Offer Letter</span>
+                  <input required name="offer" type="file" class="form-control" placeholder="" aria-label="Position"
+                    aria-describedby="basic-addon1">
+                </div>
+               <input type="hidden" value="<?php echo $key1; ?>" name="id">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" name="edit-offer" class="btn btn-primary">Edit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+          <?php
+if ( isset($row['certificate']) && $row['certificate']!='-') {
+ ?>
+<a target="_blank" href="uploads/<?php echo $row['certificate'];?>">See Certificate</a>
+  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal-ce<?php echo $key1; ?>">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </button>
+         <div class="modal fade" id="exampleModal-ce<?php echo $key1; ?>" tabindex="-1" aria-labelledby="exampleModalLabel-ce<?php echo $key1; ?>" aria-hidden="true">
+
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Certificate</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" enctype="multipart/form-data">
+              <div class="modal-body"> 
+<div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Certificate</span>
+                  <input required name="certificate" type="file" class="form-control" placeholder="" aria-label="Position"
+                    aria-describedby="basic-addon1">
+                </div>
+               <input type="hidden" value="<?php echo $key1; ?>" name="id">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" name="edit-c" class="btn btn-primary">Edit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+ <?php
+}
+          ?>
 
         </div>
       </div>
@@ -696,8 +893,8 @@ $y--;
                 </div>
 
                 <div class="input-group">
-                  <span class="input-group-text">Details</span>
-                  <textarea name="details" class="form-control" aria-label="details"></textarea>
+                  <span class="input-group-text">Abstract</span>
+                  <textarea rows="5" cols="40" name="details" class="form-control" aria-label="details" maxlength="200"></textarea>
                 </div>
 
 
@@ -1063,7 +1260,24 @@ $y--;
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Issuing Organization</span>
-              <input name="issue" type="text" class="form-control" placeholder="" aria-label="Issuing Organization"
+                <select id="or" onclick="or1()" name="issue">
+                  <?php
+    $ref1="organization/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    foreach ($fetchdata as $key => $row) {
+    ?>
+    <option value=<?php echo $row['name'];?>><?php echo $row['name']; ?></option>
+    <?php
+
+  }
+  ?>
+  <option value="Other">Other</option>
+
+                </select>
+            </div>
+            <div style="display: none;" class="input-group mb-3" id="name">
+              <span class="input-group-text" id="basic-addon1">Name</span>
+              <input name="other" type="text" class="form-control" placeholder="" aria-label="Issuing Organization"
                 aria-describedby="basic-addon1">
             </div>
 
@@ -1240,12 +1454,30 @@ $y--;
 
               </select>
             </div>
-            <div class="input-group mb-3">
+<div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Issuing Organization</span>
-              <input value="<?php echo $row['issued-by']; ?>" name="issue" type="text" class="form-control" placeholder="" aria-label="Issuing Organization"
+                <select id="or<?php echo $key1; ?>" onclick="or12('<?php echo $key1; ?>')" name="issue">
+                  <?php
+    $ref1="organization/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    foreach ($fetchdata as $key => $row1) {
+    ?>
+    <option <?php if ($row1['name']==$row['issued-by']) {
+      echo "selected";
+    }?> value=<?php echo $row1['name'];?>><?php echo $row1['name']; ?></option>
+    <?php
+
+  }
+  ?>
+  <option value="Other">Other</option>
+
+                </select>
+            </div>
+            <div style="display: none;" class="input-group mb-3" id="name<?php echo $key1; ?>">
+              <span class="input-group-text" id="basic-addon1">Name</span>
+              <input name="other" type="text" class="form-control" placeholder="" aria-label="Issuing Organization"
                 aria-describedby="basic-addon1">
             </div>
-
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">Certificate URL</span>
               <input value="<?php echo $row['certificate-url']; ?>" name="certi-url" type="url" class="form-control" placeholder="" aria-label="Certificate URL"
@@ -1324,9 +1556,11 @@ $y--;
     if (document.getElementById('flexSwitchCheckChecked').checked) {
       document.getElementById("end-year").disabled = true;
       document.getElementById("end-month").disabled = true;
+      document.getElementById("c").style.display = "none";
     } else {
       document.getElementById("end-year").disabled = false;
       document.getElementById("end-month").disabled = false;
+      document.getElementById("c").style.display = "flex";
     }
 
 
@@ -1358,6 +1592,8 @@ $y--;
   function myFunction3(id) {
    var c="flexSwitchCheckChecked";
    //var d=id;
+   var t="ci";
+   var i=t + id;
    var res=c + id;
    console.log(res);
 var e="end-year-edit";
@@ -1367,9 +1603,11 @@ var h=g + id;
     if (document.getElementById(res).checked) {
       document.getElementById(f).disabled = true;
       document.getElementById(h).disabled = true;
+       document.getElementById(i).style.display = "none";
     } else {
       document.getElementById(f).disabled = false;
       document.getElementById(h).disabled = false;
+      document.getElementById(i).style.display = "flex";
     }
 
 
@@ -1412,5 +1650,26 @@ var h=g + id;
     }
 
 
+  }
+
+  function or1(){
+    var o=document.getElementById("or").value;
+    if(o=="Other"){
+      document.getElementById("name").style.display = "flex";
+    }else{
+      document.getElementById("name").style.display = "none";
+    }
+  }
+  function or12(id){
+    var c="or";
+   var d="name";
+   var res=c + id;
+   var e=d + id;
+    var o=document.getElementById(res).value;
+    if(o=="Other"){
+      document.getElementById(e).style.display = "flex";
+    }else{
+      document.getElementById(e).style.display = "none";
+    }
   }
 </script>

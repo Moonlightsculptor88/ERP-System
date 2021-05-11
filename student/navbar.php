@@ -174,7 +174,7 @@ nav ul li a:hover{
                      <li><a href="#">Blog</a></li>
                      <li><a  href="lor-page.php"> Request LOR</a></li>
                      <li><a href="#">Contact</a></li>
-                     <li><a href="#">Contact</a></li>
+                     <li><a href="../logout.php">Logout</a></li>
                   </ul>
                </div>
             </nav>

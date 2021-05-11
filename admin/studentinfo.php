@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once '../includes/config.php';
-
+require_once 'session.php';
 $ref2="student/".$_GET['id']."/";
  //echo $ref2;
     $fetchdata2=$database->getReference($ref2)->getValue();

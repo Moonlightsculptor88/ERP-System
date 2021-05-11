@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../includes/config.php';
+require_once 'session.php';
 
 if (isset($_POST['add'])) {
   $student=$_SESSION['id'];

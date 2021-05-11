@@ -3,6 +3,7 @@ session_start();
 require '../import-excel/vendor/autoload.php';
 include '../import-excel/excel_reader2.php';
 include '../includes/config.php';
+require_once 'session.php';
 use Kreait\Firebase;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;

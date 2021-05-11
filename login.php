@@ -11,7 +11,7 @@ if (isset($_POST['login'])) {
 foreach ($fetchdata as $key => $row) {
     if($_POST['email']==$row['id'] && $_POST['Password']==$row['password']){
         $_SESSION['id']=$key;
-        $_SESSION['type']="admin";
+        $_SESSION['type']=3;
         header('Location:admin/index.php');
        // break;
     }
@@ -22,7 +22,7 @@ $ref1="student/";
     foreach ($fetchdata1 as $key => $row) {
     if($_POST['email']==$row['reg'] && $_POST['Password']==$row['dob']){
         $_SESSION['id']=$key;
-        $_SESSION['type']="student";
+        $_SESSION['type']=1;
         header('Location:student/index.php');
        // break;
     }
@@ -33,7 +33,7 @@ $ref1="teacher/";
     foreach ($fetchdata2 as $key => $row) {
     if($_POST['email']==$row['email'] && $_POST['Password']==$row['dob']){
         $_SESSION['id']=$key;
-        $_SESSION['type']="teacher";
+        $_SESSION['type']=2;
         header('Location:teacher/index.php');
        // break;
     }
