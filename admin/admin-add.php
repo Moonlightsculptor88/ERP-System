@@ -1,18 +1,25 @@
 <?php
 session_start();
+require '../import-excel/vendor/autoload.php';
+include '../import-excel/excel_reader2.php';
 require_once '../includes/config.php';
 require_once 'session.php';
+use Kreait\Firebase;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 if (isset($_POST['add'])) {
   $name=$_POST['name'];
   $email=$_POST['email'];
   $dob=$_POST['dob'];
   $dept=$_POST['dept'];
+  $phone=$_POST['phone'];
 
 $data=[
   'name'=>$name,
   'email'=>$email,
   'dob'=>$dob,
-  'dept'=>$dept
+  'branch'=>$dept,
+  'mobile'=>$phone
 ];
 $ref="teacher/";
 $postdata = $database->getReference($ref)->push($data);
@@ -21,6 +28,44 @@ if ($postdata) {
   echo "<script>alert('Data Inserted')</script>";
 }
 }
+if (isset($_POST['import'])) {
+  if (isset($_FILES['fileimport'])) {
+
+                $target = basename($_FILES['fileimport']['name']) ;
+                move_uploaded_file($_FILES['fileimport']['tmp_name'], $target);
+                
+                
+                chmod($_FILES['fileimport']['name'],0777);
+                
+                
+                $data = new Spreadsheet_Excel_Reader($_FILES['fileimport']['name'],false);
+                
+                
+                $count = $data->rowcount(0);
+                
+                for ($i=2; $i<=$count; $i++) {
+                    
+                    $name    = $data->val($i, 1, 0);
+                    $email  = $data->val($i, 2, 0);
+                    $dob  = $data->val($i, 3, 0);
+                    $dept  = $data->val($i, 4, 0);
+                    $phone  = $data->val($i, 5, 0);
+                    
+                    //Masukkan data hasil import ke firebase
+                    $database->getReference('teacher')->push([
+                        'name'=>$name,
+                        'email'=>$email,
+                        'dob'=>$dob,
+                        'branch'=>$dept,
+                        'mobile'=>$phone
+                        ]
+                    );
+                }
+    
+                unlink($_FILES['fileimport']['name']);
+            }
+            
+  }
 ?>
 
 <!doctype html>
@@ -64,15 +109,19 @@ require_once 'navbar.php';
   <input type="text" class="form-control" placeholder="yourmail@gmail.com" aria-label="Username" aria-describedby="basic-addon1" name="email">
 </div>
 <div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Department</label>
-  <select name="dept" class="form-select" id="inputGroupSelect01">
+  <span class="input-group-text" id="basic-addon1">Mobile Number</span>
+  <input type="tel" class="form-control" placeholder="9847547845" aria-label="Username" aria-describedby="basic-addon1" name="phone" pattern="[0-9]{10}">
+</div>
+<div class="input-group mb-3">
+  <label class="input-group-text" for="branch">Branch</label>
+  <select name="dept" class="form-select" id="branch">
    <!--<option value="0">Choose...</option>-->
     <?php
-    $ref1="dept/";
+    $ref1="branch/";
     $fetchdata=$database->getReference($ref1)->getValue();
     foreach ($fetchdata as $key => $row) {
     ?>
-    <option value=<?php echo $key;?>><?php echo $row['name']; ?></option>
+    <option value="<?php echo $row['name'];?>"><?php echo $row['name']; ?></option>
     <?php
 
   }
@@ -90,7 +139,7 @@ require_once 'navbar.php';
 </button>
   
 </div>
-
+</form>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -101,12 +150,12 @@ require_once 'navbar.php';
       </div>
       
       <div class="modal-body" style="text-align:center;">
-        <button onclick="location.href='../import-excel/example_excel.xls'"class="btn btn-outline-dark">Download Template</button>
+        <button onclick="location.href='teacher.xls'" class="btn btn-outline-dark">Download Template</button>
 
         <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
   <label for="formFile" class="form-label"></label>
-  <input name="fileimport" class="form-control" type="file" id="formFile" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+  <input name="fileimport" class="form-control" type="file" id="formFile" accept="application/vnd.ms-excel" required>
 </div>
         
       </div>

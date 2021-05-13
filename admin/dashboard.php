@@ -73,7 +73,7 @@ while($y>2000){
     $fetchdata=$database->getReference($ref1)->getValue();
     foreach ($fetchdata as $key => $row) {
     ?>
-    <option value=<?php echo $key;?>><?php echo $row['name']; ?></option>
+    <option value="<?php echo $row['name'];?>"><?php echo $row['name']; ?></option>
     <?php
 
   }

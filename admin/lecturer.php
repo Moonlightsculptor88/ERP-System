@@ -27,7 +27,7 @@ require_once 'navbar.php';
 ?>
 
 <div>
-    <button class="btn btn-outline-dark add-lect-btn">Add Lecturer</button>
+    <button onclick="location.href='admin-add.php'" class="btn btn-outline-dark add-lect-btn">Add Lecturer</button>
 </div>
 
 <div class="container lect-container">

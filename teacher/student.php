@@ -37,6 +37,7 @@ $ref2="student/";
  //echo $ref2;
     $fetchdata2=$database->getReference($ref2)->getValue();
     foreach($fetchdata2 as $key1=>$row){
+      if($row['teacher_id']==$_SESSION['id']){
       $ref3="branch/".$row['branch']."/";
  //echo $ref2;
     $fetchdata3=$database->getReference($ref3)->getValue();
@@ -53,7 +54,10 @@ $ref2="student/";
                       Reg-No:  <?php echo $row['reg']; ?>
                     </li>
                     <li>
-                      Branch:  <?php echo $fetchdata3['name']; ?>
+                      Batch:  <?php echo $row['batch']; ?>
+                    </li>
+                    <li>
+                      Branch:  <?php echo $row['branch']; ?>
                     </li>
                     <li>
                       Section:  <?php echo $row['section']; ?>
@@ -74,6 +78,7 @@ $ref2="student/";
             <?php
 
           }
+        }
           ?>
           
 

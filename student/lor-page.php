@@ -120,22 +120,7 @@ require_once 'navbar.php';
 <h3 class="add-heading">Enter Details</h3>
 <form method="post" enctype="multipart/form-data">
   
-<div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Department</label>
-  <select name="dept" class="form-select" id="inputGroupSelect01">
-   
-<?php
-    $ref1="dept/";
-    $fetchdata=$database->getReference($ref1)->getValue();
-    foreach ($fetchdata as $key => $row) {
-    ?>
-    <option value=<?php echo $key;?>><?php echo $row['name']; ?></option>
-    <?php
 
-  }
-  ?>
-  </select>
-</div>
 <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Lecturer</label>
   <select name="lect" class="form-select" id="inputGroupSelect01">
@@ -162,7 +147,7 @@ require_once 'navbar.php';
 </div>
 <div class="input-group mb-3">
   <label class="input-group-text" for="Organization">Organization Name</label>
-  <input list="Organizations" name="Organization" id="Organization" >
+  <input list="Organizations" name="Organization" id="Organization" placeholder="Select or type">
   <datalist id="Organizations">
     
     <?php

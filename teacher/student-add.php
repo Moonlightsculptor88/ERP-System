@@ -7,13 +7,18 @@ require_once 'session.php';
 use Kreait\Firebase;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
-
+ 
+    $ref1="teacher/".$_SESSION['id']."/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+   // echo $fetchdata['dept'];
 if (isset($_POST['add'])) {
+
+
   $name=$_POST['name'];
   $email=$_POST['email'];
   $dob=$_POST['dob'];
   $batch=$_POST['batch'];
-  $branch=$_POST['branch'];
+  $branch=$fetchdata['branch'];
   $section=$_POST['section'];
   $reg=$_POST['reg'];
 
@@ -24,7 +29,8 @@ $data=[
   'batch'=>$batch,
   'branch'=>$branch,
   'section'=>$section,
-  'reg'=>$reg
+  'reg'=>$reg,
+  'teacher_id'=>$_SESSION['id']
 ];
 $ref="student/";
 $postdata = $database->getReference($ref)->push($data);
@@ -54,19 +60,20 @@ if (isset($_POST['import'])) {
                     $reg    = $data->val($i, 1, 0);
                     $name  = $data->val($i, 2, 0);
                     $batch  = $data->val($i, 3, 0);
-                    $branch  = $data->val($i, 4, 0);
-                    $dob  = $data->val($i, 5, 0);
-                  $section  = $data->val($i, 6, 0);
-                  $email  = $data->val($i, 7, 0);
+                    //$branch  = $data->val($i, 4, 0);
+                    $dob  = $data->val($i, 4, 0);
+                  $section  = $data->val($i, 5, 0);
+                  $email  = $data->val($i, 6, 0);
                     //Masukkan data hasil import ke firebase
                     $database->getReference('student')->push([
                         'reg' => $reg,
                         'name' => $name,
                         'batch' => $batch,
-                        'branch' => $branch,
+                        'branch' => $fetchdata['branch'],
                         'dob' => $dob,
                         'section' => $section,
                         'email' => $email,
+                        'teacher_id'=>$_SESSION['id']
                         ]
                     );
                 }
@@ -121,22 +128,7 @@ require_once 'navbar.php';
   <span class="input-group-text" id="basic-addon1">Batch</span>
   <input type="text" class="form-control" placeholder="2007" aria-label="Username" aria-describedby="basic-addon1" name="batch">
 </div>
-<div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Branch</label>
-  <select name="branch" class="form-select" id="inputGroupSelect01">
-   <!--<option value="0">Choose...</option>-->
-    <?php
-    $ref1="branch/";
-    $fetchdata=$database->getReference($ref1)->getValue();
-    foreach ($fetchdata as $key => $row) {
-    ?>
-    <option value=<?php echo $key;?>><?php echo $row['name']; ?></option>
-    <?php
 
-  }
-  ?>
-  </select>
-</div>
  <div class="input-group mb-3">
   <span class="input-group-text" id="basic-addon1">Section</span>
   <input type="text" class="form-control" placeholder="C" aria-label="Username" aria-describedby="basic-addon1" name="section">
@@ -169,12 +161,12 @@ require_once 'navbar.php';
       </div>
       
       <div class="modal-body" style="text-align:center;">
-        <button onclick="location.href='../import-excel/example_excel.xls'"class="btn btn-outline-dark">Download Template</button>
+        <button onclick="location.href='student.xls'" class="btn btn-outline-dark">Download Template</button>
 
         <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
   <label for="formFile" class="form-label"></label>
-  <input name="fileimport" class="form-control" type="file" id="formFile" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
+  <input name="fileimport" class="form-control" type="file" id="formFile" accept="application/vnd.ms-excel" required>
 </div>
         
       </div>

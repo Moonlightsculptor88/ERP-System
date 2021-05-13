@@ -67,7 +67,7 @@ while($y>2000){
     $fetchdata=$database->getReference($ref1)->getValue();
     foreach ($fetchdata as $key => $row) {
     ?>
-    <option value=<?php echo $key;?>><?php echo $row['name']; ?></option>
+    <option value="<?php echo $row['name'];?>"><?php echo $row['name']; ?></option>
     <?php
 
   }
@@ -119,7 +119,10 @@ $ref2="student/";
                       Reg-No:  <?php echo $row['reg']; ?>
                     </li>
                     <li>
-                      Branch:  <?php echo $fetchdata3['name']; ?>
+                      Batch:  <?php echo $row['batch']; ?>
+                    </li>
+                    <li>
+                      Branch:  <?php echo $row['branch']; ?>
                     </li>
                     <li>
                       Section:  <?php echo $row['section']; ?>
