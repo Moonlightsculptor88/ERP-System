@@ -44,7 +44,7 @@ if (isset($_POST['import'])) {
                 $count = $data->rowcount(0);
                 
                 for ($i=2; $i<=$count; $i++) {
-                    
+                    if(strlen($data->val($i, 1, 0))>2 && strlen($data->val($i, 2, 0))>2){
                     $name    = $data->val($i, 1, 0);
                     $email  = $data->val($i, 2, 0);
                     $dob  = $data->val($i, 3, 0);
@@ -61,6 +61,7 @@ if (isset($_POST['import'])) {
                         ]
                     );
                 }
+              }
     
                 unlink($_FILES['fileimport']['name']);
             }
