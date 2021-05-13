@@ -27,27 +27,39 @@ require_once 'navbar.php';
 ?>
 
 <div>
-    <button class="btn btn-outline-dark add-lect-btn">Add Student</button>
+    <button onclick="location.href='student-add.php'" class="btn btn-outline-dark add-lect-btn">Add Student</button>
 </div>
 
 <div class="container lect-container">
      <div class="row">
+      <?php
+$ref2="student/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+    foreach($fetchdata2 as $key1=>$row){
+      $ref3="branch/".$row['branch']."/";
+ //echo $ref2;
+    $fetchdata3=$database->getReference($ref3)->getValue();
+      ?>
+
             <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
                   <div class="panel-body">
                   <div class="student-card">
                     <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
+                    <li>Name:  <?php echo $row['name']; ?>
                     </li>
                     <li>
-                      Email:youremail@gmail.com
+                      Reg-No:  <?php echo $row['reg']; ?>
+                    </li>
+                    <li>
+                      Branch:  <?php echo $fetchdata3['name']; ?>
+                    </li>
+                    <li>
+                      Section:  <?php echo $row['section']; ?>
                     </li>
                   </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                  <button onclick="location.href='studentinfo.php?id=<?php echo $key1;?>'" type="button" class="btn btn-primary more-info">More Info</button>
                 </div>
                   
                   <div class="student-pic">
@@ -59,202 +71,15 @@ require_once 'navbar.php';
                  
                 </div>
             </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
+            <?php
+
+          }
+          ?>
+          
 
 
-     <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic ">
-                    <img class="student-img " src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
-    
-    
      
-
-
-     <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
-
-           <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic ">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
-
+    
             <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item ">
@@ -279,7 +104,7 @@ require_once 'navbar.php';
     
 
 </div>
-  
+  </div>
   </body>
 </html>
 
