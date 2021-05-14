@@ -47,6 +47,7 @@ nav {
       position: fixed;
       width: 100%;
       line-height: 60px;
+      z-index: 2;
 }
 
 nav ul {

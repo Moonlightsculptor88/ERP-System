@@ -9,6 +9,16 @@ body {
     border: 10px;
 }
 
+table{
+  text-align: left;
+  border: 5px solid black;
+}
+
+.heading-main{
+  padding-top: 3%;
+  text-align: center;
+}
+
 /* NavBar */
 
 .nav-btn{
@@ -141,10 +151,13 @@ body {
   color: black;
   background-color: white;
   height: 95%;
-  width: 80%;
   margin: auto;
   padding: 10px;
   display: flex;
+}
+
+.card-text{
+  text-align: left;
 }
 
 

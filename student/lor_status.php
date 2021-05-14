@@ -47,13 +47,14 @@ require_once 'navbar.php';
     echo $fetchdata2['name'];
 
 ?></h5>
-      <small> Requested On <?php echo $row['date'];?></small>
+
+      <p> Requested On <?php echo $row['date'];?></p>
     </div>
     <div class="d-flex w-100 justify-content-between">
     
     <h6 class="mb-1"><?php echo $row['info'];?></h6>
 
-    <small> <?php if($row['flag']==0) echo "Pending";
+    <p> <?php if($row['flag']==0) echo "Pending";
      if($row['flag']==1){ echo "Issued";
      ?>
      <button class="btn btn-primary" onclick="location.href='../teacher/lor/<?php echo $row['lor'];?>'" >Download </button>
@@ -64,7 +65,8 @@ require_once 'navbar.php';
      //echo "Reason for rejection:";
 //echo $row['reason'];
    
-    ?></small>
+    ?></p>
+    
   </div>
   <div><h6 class="mb-1">Reason for rejection:<?php echo $row['reason'];?></h6>
 <?php

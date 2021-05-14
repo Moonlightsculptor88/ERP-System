@@ -25,6 +25,7 @@ require_once 'sidebar.php';
 <?php
 require_once 'navbar.php';
 ?>
+<h1 class="heading-main">Pending LOR</h1>
 <div class="container display-list" style="padding-top:50px;">
 
 <div class="list-group">
@@ -46,7 +47,7 @@ require_once 'navbar.php';
 ?></h5>
       <small><?php echo $row['date'];?></small>
     </div>
-    <p class="mb-1"><?php
+    <p class="mb-1">Branch: <?php
  $ref3="branch/".$fetchdata2['branch']."/";
  //echo $ref3;
     $fetchdata3=$database->getReference($ref3)->getValue();

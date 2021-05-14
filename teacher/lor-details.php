@@ -62,20 +62,33 @@ require_once 'navbar.php';
 
 
 <div class="container student-info">
-
-
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  
+<div class="row" style="padding-bottom:1%;">
+<div class="col-lg-6"><nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item "><a href="#" class="black">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page"><?php echo $fetchdata2['name'];?></li>
   </ol>
-</nav> 
+</nav> </div>
 
+
+
+<div  class="col-lg-6" style="text-align:right;">
+    <button onclick="location.href='issue_lor.php?id=<?php echo $_GET['id']?>'" type="button" class="btn btn-primary btn-md">Issue LOR</button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Reject
+</button></div>
+
+</div>
 
 
 <div class="card stud-info-card">
+  
   <h5 class="card-header"><div >
+   
+  
                   <div class="student-card">
+                    
                     <div><ul>
                     <li><?php echo $fetchdata2['name'];?> 
                     </li>
@@ -106,17 +119,48 @@ require_once 'navbar.php';
                   </div>
                 </div>
   <div class="card-body">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">File Type</th>
+      <th scope="col">View File</th>
+      <th scope="col">Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td >Larry the Bird</td>
+      <td>@twitter</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
     
     
-    <p class="card-text"><?php echo $fetchdata1['info']; ?></p>
-<p class="card-text"><?php echo $fetchdata1['purpose']; ?></p>
-<a href="../student/uploads/<?php echo $fetchdata1['file'];?>" target="_blank">View document uploaded</a>
+    <p class="card-text"><span style="font-weight:bold;">Info: </span>This is the info.</p>
+<p class="card-text"><span style="font-weight:bold;">Purpose: </span>This is the purpose</p>
+<p class="card-text"><span style="font-weight:bold;">Type: </span>This is the purpose</p>
+<p class="card-text"><span style="font-weight:bold;">Organization: </span>This is the name</p>
+
+
     <button onclick="location.href='issue_lor.php?id=<?php echo $_GET['id']?>'" type="button" class="btn btn-primary btn-md">Issue LOR</button>
-<!--<button type="button" class="btn btn-secondary btn-md">Reject LOR</button>-->
-    <!-- Button trigger modal -->
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Reject
 </button>
 
 
