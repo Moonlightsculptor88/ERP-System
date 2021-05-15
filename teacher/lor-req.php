@@ -58,7 +58,7 @@ require_once 'navbar.php';
     <small><?php echo $row['info'];?></small>
   </a>
     <?php
-
+    
   }}
   ?>
   
