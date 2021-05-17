@@ -121,7 +121,9 @@ require_once 'navbar.php';
 <form method="post" enctype="multipart/form-data">
   
 
-<div class="input-group mb-3">
+  <div class="my-box" style="display:flex;">
+
+<div class="input-group mb-3 small-input">
   <label class="input-group-text" for="inputGroupSelect01">Lecturer</label>
   <select name="lect" class="form-select" id="inputGroupSelect01">
    <?php
@@ -137,16 +139,16 @@ require_once 'navbar.php';
 
   </select>
 </div>
-<div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Type</label>
-  <select name="type" class="form-select" id="inputGroupSelect014">
+<div class="input-group mb-3 small-input">
+  <label class="input-group-text " for="inputGroupSelect01">Type</label>
+  <select name="type" class="form-select small-input" id="inputGroupSelect014">
    <option value="Higher Education">Higher Education</option>
    <option value="Company">Company</option>
    <option value="Other">Other</option>
   </select>
 </div>
-<div class="input-group mb-3">
-  <label class="input-group-text" for="Organization">Organization Name</label>
+<div class="input-group mb-3 small-input">
+  <label class="input-group-text " for="Organization">Organization Name</label>
   <input list="Organizations" name="Organization" id="Organization" placeholder="Select or type">
   <datalist id="Organizations">
     
@@ -161,6 +163,7 @@ require_once 'navbar.php';
   }
   ?>
   </datalist>
+</div>
 </div>
 
           
@@ -181,22 +184,24 @@ require_once 'navbar.php';
 <option value="Grade Card">Grade Card</option>
 <option value="Other">Other</option>
   </select>
+  <button class="btn btn-outline-danger">Delete File</button>
 </div>
 <div style="display: none;" class="mb-3" id="remark">
   <label for="exampleFormControlTextarea1" class="form-label">Remarks</label>
   <textarea name="remark1" class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
 </div>
-<div class="form-label">Document</div>
 
-<div class="input-group mb-3">
-  
-  <input type="file" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="uploadfile1">
+<div class=" choose-file">
+<div class="input-group mb-3 ">
+  <input type="file" class="form-control "  aria-label="Username" aria-describedby="basic-addon1" name="uploadfile1">
+</div>
 </div>
 <div id="position_fields">
   
 </div>
-<input type="submit" name="poss" id="addPos" value="Add Another file">
-
+<div>
+<input class="btn btn-outline-dark" type="submit" name="poss" id="addPos" value="Add Another file">
+</div>
 <div class="d-grid gap-2 col-2 mx-auto">
   <button name="add" class="btn btn-primary lor-submit" type="submit">Submit</button>
   
@@ -253,14 +258,14 @@ $(document).ready(function(){
 <option value="Other">Other</option> \
   </select> \
   </div> \
-  <div style="display: none;" class="mb-3" id="remark'+countPos+'"> \
+  <div style="display: none;" class="mb-3 " id="remark'+countPos+'"> \
   <label for="remark'+countPos+'" class="form-label">Remarks</label> \
   <textarea name="remark'+countPos+'" class="form-control" id="remark'+countPos+'" rows="1"></textarea> \
 </div> \
-<div class="form-label">Document</div> \
+<div class="choose-file">\
 <div class="input-group mb-3"> \
 <input type="file" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="uploadfile'+countPos+'">\
-            </div>');
+            </div></div>');
     });
 });
 </script>

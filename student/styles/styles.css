@@ -7,6 +7,7 @@ body {
 #full-page{
     transition: 0.5s;
     border: 10px;
+    padding-bottom: 3%;
 }
 
 /* NavBar */
@@ -387,4 +388,22 @@ ul{
 
 .add-certificates-btn:hover{
   background-color:#989EFF ;
+}
+
+.small-input{
+  width:31%;
+  margin: 0px 20px 0 0 ;
+}
+
+.choose-file{
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+  .small-input{
+    width: 100%;
+  }
+  .my-box{
+    flex-direction: column;
+  }
 }
