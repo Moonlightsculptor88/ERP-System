@@ -65,10 +65,11 @@ require_once 'navbar.php';
     
     <h6 class="mb-1"><?php echo $row['info'];?></h6>
 
-    <small> 
+
      <button class="btn btn-primary" onclick="location.href='../teacher/lor/<?php echo $row['lor'];?>'" >View LOR </button>
      
       
+  </div>
   </div>
     <?php
 
@@ -84,7 +85,7 @@ require_once 'navbar.php';
     <small class="text-muted">And some muted small print.</small>
   </a>-->
   
-</div>
+
 
 
 </div>

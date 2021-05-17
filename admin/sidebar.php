@@ -5,19 +5,18 @@
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Student Details</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <a href="student.php">Student Details</a>
+    <a href="dashboard.php">Internship/projects Details</a>
+    <a href="lor.php">LOR</a>
   </div>
   <button class="dropdown-btn">Lecturer
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <a href="lecturer.php">Lecturer Details</a>
+    <a href="admin-add.php">Add Lecturer</a>
   </div>
-  <button class="dropdown-btn">Client
+  <button class="dropdown-btn " disabled>Client
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
