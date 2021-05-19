@@ -5,20 +5,12 @@ require_once 'session.php';
 
 if (isset($_POST['add'])) {
   $student=$_SESSION['id'];
-  $dept=$_POST['dept'];
+  //$dept=$_POST['dept'];
   $lect=$_POST['lect'];
   $purpose=$_POST['purpose'];
   $info=$_POST['info'];
 
-  /*$uniquesavename=time().uniqid(rand());
-$filename = $uniquesavename.$_FILES['uploadfile']['name'];
-$tempname = $_FILES['uploadfile']['tmp_name'];
-$folder = "uploads/".$filename;
-if (move_uploaded_file($tempname, $folder)) {
-  echo "Image uploaded successfully";
-}else {
-  echo "Failed to upload image";
-}*/
+  
 $flag=0;
 $date=date("Y-m-d");
 $ref1="lor-organization/";
@@ -184,7 +176,7 @@ require_once 'navbar.php';
 <option value="Grade Card">Grade Card</option>
 <option value="Other">Other</option>
   </select>
-  <button class="btn btn-outline-danger">Delete File</button>
+  <!--<button class="btn btn-outline-danger">Delete File</button>-->
 </div>
 <div style="display: none;" class="mb-3" id="remark">
   <label for="exampleFormControlTextarea1" class="form-label">Remarks</label>
@@ -250,13 +242,15 @@ $(document).ready(function(){
         countPos++;
         window.console && console.log("Adding position "+countPos);
         $('#position_fields').append(
-            '<div class="input-group mb-3" > \
+            '<div id="position'+countPos+'"> \
+            <div class="input-group mb-3" > \
             <label class="input-group-text" for="file-type'+countPos+'">File Type</label> \
             <select onchange="o2('+countPos+')" name="file-type'+countPos+'" class="form-select" id="file-type'+countPos+'"> \
    <option value="Offer Letter"> Offer Letter</option> \
 <option value="Grade Card">Grade Card</option> \
 <option value="Other">Other</option> \
   </select> \
+  <button class="btn btn-outline-danger" onclick="$(\'#position'+countPos+'\').remove();return false;">Delete File</button> \
   </div> \
   <div style="display: none;" class="mb-3 " id="remark'+countPos+'"> \
   <label for="remark'+countPos+'" class="form-label">Remarks</label> \
@@ -265,7 +259,7 @@ $(document).ready(function(){
 <div class="choose-file">\
 <div class="input-group mb-3"> \
 <input type="file" class="form-control"  aria-label="Username" aria-describedby="basic-addon1" name="uploadfile'+countPos+'">\
-            </div></div>');
+            </div></div></div>');
     });
 });
 </script>

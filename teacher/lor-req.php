@@ -47,11 +47,9 @@ require_once 'navbar.php';
 ?></h5>
       <small><?php echo $row['date'];?></small>
     </div>
-    <p class="mb-1">Branch: <?php
- $ref3="branch/".$fetchdata2['branch']."/";
- //echo $ref3;
-    $fetchdata3=$database->getReference($ref3)->getValue();
-    echo $fetchdata3['name'];
+    <p class="mb-1"><?php
+ 
+    echo $fetchdata2['branch'];
     echo " ";
     echo $fetchdata2['batch'];
 ?></p>

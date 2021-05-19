@@ -60,7 +60,7 @@ require_once 'navbar.php';
                       Reg-No: <?php echo $fetchdata2['reg'];?>
                     </li>
                     <li>
-                      Branch: <?php echo $fetchdata3['name'];?>
+                      Branch: <?php echo $fetchdata2['branch'];?>
                     </li>
                     <li>
                       Section: <?php echo $fetchdata2['section'];?>

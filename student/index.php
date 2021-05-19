@@ -287,7 +287,7 @@ require_once 'navbar.php';
             Reg-No: <?php echo $fetchdata2['reg'];?> <br>
             DOB: <?php echo $fetchdata2['dob'];?> <br>
             Batch: <?php echo $fetchdata2['batch'];?> <br>
-            Branch: <?php echo $fetchdata3['name'];?> <br>
+            Branch: <?php echo $fetchdata2['branch'];?> <br>
 
 
           </div>

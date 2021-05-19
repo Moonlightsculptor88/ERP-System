@@ -39,7 +39,7 @@ if($_POST['batch']==$row['batch'] && $_POST['branch']==$row['branch'] && $_POST[
                       Reg-No:  <?php echo $row['reg']; ?>
                   </li>
                     <li>
-                      Branch:  <?php echo $fetchdata3['name']; ?>
+                      Branch:  <?php echo $row['branch']; ?>
                     </li>
                     <li>
                       Section:  <?php echo $row['section']; ?>
@@ -82,7 +82,7 @@ if($_POST['batch']==$row['batch'] && $_POST['branch']==$row['branch']){
                       Reg-No:  <?php echo $row['reg']; ?>
                   </li>
                     <li>
-                      Branch:  <?php echo $fetchdata3['name']; ?>
+                      Branch:  <?php echo $row['branch']; ?>
                     </li>
                     <li>
                       Section:  <?php echo $row['section']; ?>
@@ -125,7 +125,7 @@ if($_POST['batch']==$row['batch']){
                       Reg-No:  <?php echo $row['reg']; ?>
                   </li>
                     <li>
-                      Branch:  <?php echo $fetchdata3['name']; ?>
+                      Branch:  <?php echo $row['branch']; ?>
                     </li>
                     <li>
                       Section:  <?php echo $row['section']; ?>
@@ -161,7 +161,7 @@ if($_POST['batch']==$row['batch']){
                       Reg-No:  <?php echo $row['reg']; ?>
                   </li>
                     <li>
-                      Branch:  <?php echo $fetchdata3['name']; ?>
+                      Branch:  <?php echo $row['branch']; ?>
                     </li>
                     <li>
                       Section:  <?php echo $row['section']; ?>

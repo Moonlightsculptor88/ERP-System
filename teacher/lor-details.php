@@ -97,10 +97,8 @@ require_once 'navbar.php';
                     </li>
                     <li>
                       Branch: <?php
- $ref4="branch/".$fetchdata2['branch']."/";
- //echo $ref3;
-    $fetchdata4=$database->getReference($ref4)->getValue();
-    echo $fetchdata4['name'];
+ 
+    echo $fetchdata2['branch'];
     
 ?>
                     </li>
@@ -129,32 +127,34 @@ require_once 'navbar.php';
     </tr>
   </thead>
   <tbody>
+    <?php
+$ref4="request/".$_GET['id']."/file/";
+$fetchdata4=$database->getReference($ref4)->getValue();
+$i=1;
+    foreach($fetchdata4 as $key1=>$row){
+    ?>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"><?php echo $i++;?></th>
+      <td><?php echo $row['file-type'];?></td>
+      <td><a target="_blank" href="../student/uploads/<?php echo $row['file-name']; ?>">View</a></td>
+      <td><?php if(strlen($row['file-remark'])>3){echo $row['file-remark']; }
+else{
+  echo "None";
+}
+      ?></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td >Larry the Bird</td>
-      <td>@twitter</td>
-      <td>@twitter</td>
-    </tr>
+    <?php
+  }
+    ?>
+    
   </tbody>
 </table>
     
     
-    <p class="card-text"><span style="font-weight:bold;">Info: </span>This is the info.</p>
-<p class="card-text"><span style="font-weight:bold;">Purpose: </span>This is the purpose</p>
-<p class="card-text"><span style="font-weight:bold;">Type: </span>This is the purpose</p>
-<p class="card-text"><span style="font-weight:bold;">Organization: </span>This is the name</p>
+    <p class="card-text"><span style="font-weight:bold;">Info: </span><?php echo $fetchdata1['info'] ?></p>
+<p class="card-text"><span style="font-weight:bold;">Purpose: </span><?php echo $fetchdata1['purpose'] ?></p>
+<p class="card-text"><span style="font-weight:bold;">Type: </span><?php echo $fetchdata1['type'] ?></p>
+<p class="card-text"><span style="font-weight:bold;">Organization: </span><?php echo $fetchdata1['organization'] ?></p>
 
 
     <button onclick="location.href='issue_lor.php?id=<?php echo $_GET['id']?>'" type="button" class="btn btn-primary btn-md">Issue LOR</button>

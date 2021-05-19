@@ -32,137 +32,34 @@ require_once 'navbar.php';
 
 <div class="container lect-container">
      <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
-
-
-     <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic ">
-                    <img class="student-img " src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
+      <?php
+$ref2="teacher/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+    foreach($fetchdata2 as $key1=>$row){
     
-    
-     
-
-
-     <div class="container">
-     <div class="row">
+      ?>
             <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
                   <div class="panel-body">
                   <div class="student-card">
                     <div><ul>
-                    <li>Name: Rahul Mishra
+                    <li>Name: <?php echo $row['name']; ?>
                     </li>
-                   
-                    <li>
-                      Dept: CSE
+                   <li>
+                      DOB:   <?php echo $row['dob']; ?>
                     </li>
                     <li>
-                      Email:youremail@gmail.com
+                      Dept:   <?php echo $row['branch']; ?>
+                    </li>
+                    <li>
+                      Email:  <?php echo $row['email']; ?>
+                    </li>
+                     <li>
+                      Mobile:  <?php echo $row['mobile']; ?>
                     </li>
                   </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
+                 <!-- <button type="button" class="btn btn-primary more-info">More Info</button>-->
                 </div>
                   
                   <div class="student-pic">
@@ -174,86 +71,11 @@ require_once 'navbar.php';
                  
                 </div>
             </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
+            <?php
 
-           <div class="container">
-     <div class="row">
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic ">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-                 
-                </div>
-                 
-                </div>
-            </div>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name: Rahul Mishra
-                    </li>
-                   
-                    <li>
-                      Dept: CSE
-                    </li>
-                    <li>
-                      Email:youremail@gmail.com
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-                  
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                </div>
-            </div>
-        </div>
-     </div>
+          }
+          ?>
+            
 
             <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
@@ -277,8 +99,10 @@ require_once 'navbar.php';
             
         
     
-
 </div>
+</div>
+</div>
+
   
   </body>
 </html>
