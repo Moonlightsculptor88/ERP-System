@@ -2,7 +2,10 @@
 session_start();
 require_once '../includes/config.php';
 require_once 'session.php';
+
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -16,8 +19,9 @@ require_once 'session.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css">
     <link href="./styles/styles.css" rel="stylesheet">
     <title>ERP System</title>
   </head>
@@ -27,6 +31,10 @@ require_once 'session.php';
  text-align:center; 
  background: url('loader.gif') no-repeat center; 
  height: 150px;
+}
+
+table{
+  border: 2px solid black;
 }
 </style>
   <body>
@@ -41,10 +49,17 @@ require_once 'navbar.php';
 <div class="container filter-row">
 
 <h3>Filter:</h3>
-
 <div>
-  <select class="form-select filter-dropdown batch common" aria-label="Default select example" id="batch">
-  <option>Batch</option>
+  <select name="category" class="form-select filter-dropdown category common" aria-label="Default select example" id="category">
+  <option value="Category">Category</option>
+  <option value="internship">Internship</option>
+  <option value="certificates">Certificate</option>
+  <option value="projects">Project</option>
+</select>
+</div>
+<div>
+  <select name="batch" class="form-select filter-dropdown batch common" aria-label="Default select example" id="batch" disabled>
+  <option value="Batch">Batch</option>
   <option value="all">All</option>
   <?php 
     $y=date("Y");
@@ -60,7 +75,7 @@ while($y>2000){
 </select>
 </div>
 <div>
-  <select class="form-select filter-dropdown branch common" aria-label="Default select example" id="branch" disabled>
+  <select name="branch" class="form-select filter-dropdown branch common" aria-label="Default select example" id="branch" disabled>
   <option value="Branch">Branch</option>
   <option value="all">All</option>
   <?php
@@ -85,106 +100,62 @@ while($y>2000){
   <option value="D">D</option>
 </select>
 </div>
-<div>
-  <select class="form-select filter-dropdown common" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="all">All</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
-</div>
-
 
 </div>
 
 <div class="container filter_data">
      <div class="row">
-      <?php
-$ref2="student/";
- //echo $ref2;
-    $fetchdata2=$database->getReference($ref2)->getValue();
-    foreach($fetchdata2 as $key1=>$row){
-      $ref3="branch/".$row['branch']."/";
- //echo $ref2;
-    $fetchdata3=$database->getReference($ref3)->getValue();
-      ?>
-            <div class="col-lg-6  panel-pad-10">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                  <div class="student-card">
-                    <div><ul>
-                    <li>Name:  <?php echo $row['name']; ?>
-                    </li>
-                    <li>
-                      Reg-No:  <?php echo $row['reg']; ?>
-                    </li>
-                    <li>
-                      Batch:  <?php echo $row['batch']; ?>
-                    </li>
-                    <li>
-                      Branch:  <?php echo $row['branch']; ?>
-                    </li>
-                    <li>
-                      Section:  <?php echo $row['section']; ?>
-                    </li>
-                  </ul>
-                  <button onclick="location.href='studentinfo.php?id=<?php echo $key1;?>'" type="button" class="btn btn-primary more-info">More Info</button>
-                </div>
-
-                  <div class="student-pic">
-                    <img class="student-img" src="./img/person.png" alt="some">
-                  </div>
-                  </div>
-
-                </div>
-
-                </div>
-            </div>
-            <?php
-
-          }
-          ?>
-
-            <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item ">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-
-
-
+ 
 </div>
   </div>
-</div>
 
   </body>
 
 </html>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDKeSYOCP5dQi9XloD1eQCrt2M9_jgb9Z0",
+    authDomain: "erp-system-8bd84.firebaseapp.com",
+    databaseURL: "https://erp-system-8bd84-default-rtdb.firebaseio.com",
+    projectId: "erp-system-8bd84",
+    storageBucket: "erp-system-8bd84.appspot.com",
+    messagingSenderId: "944239993666",
+    appId: "1:944239993666:web:7fe5a4eb5ea29665055edb",
+    measurementId: "G-W9X41C3P7J"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+
+
 <script type="text/javascript">
   $(document).ready(function(){
-
+$('#example').DataTable({
+  "pageLength": 20,
+  "searching": false
+});
    /*var batch = $('#batch option:selected').val();
    var branch = $('#branch option:selected').val();
    var action = 'fetch_data';
    console.log(batch);*/
 
 $('.common').change(function(){
+	var category =$('#category option:selected').val();
   var batch = $('#batch option:selected').val();
    var branch = $('#branch option:selected').val();
    var section = $('#section option:selected').val();
@@ -193,15 +164,41 @@ $('.common').change(function(){
 
    $('.filter_data').html('<div id="loading" style="" ></div>');
             $.ajax({
-            url:"search.php",
+            url:"dash-search.php",
             method:"POST",
-            data:{action:action,batch:batch,branch:branch,section:section},
+            data:{action:action,batch:batch,branch:branch,section:section,category:category},
             success:function(data){
                 $('.filter_data').html(data);
+                $('#example').DataTable({
+  "pageLength": 20,
+  "searching": false,
+  dom: 'Bfrtip',
+
+        buttons: [
+            
+            {
+              filename: 'report',
+         extend: 'excel',
+         title : '',
+         text: 'Export Search Results',
+         className: 'btn btn-default',
+         exportOptions: {
+            columns: 'th:not(:last-child)'
+         }
+      }
+            
+        ]
+});
                 
             }
             });
 });
+
+$('.category').change(function(){
+if($('#category option:selected').val() !="Category"){
+  $('#batch').removeAttr("disabled");
+}
+  });
 
 $('.batch').change(function(){
 if($('#batch option:selected').val() !="Batch"){

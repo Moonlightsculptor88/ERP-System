@@ -1,54 +1,36 @@
 <?php
-session_start();
-require_once '../includes/config.php';
-$ref="request/";
-//$postdata = $database->getReference($ref)->push($data);
 
-$fe=$database->getReference($ref)
-    // order the reference's children by the values in the field 'height'
-    ->orderByKey()
-    
-    ->limitToLast(1)
-    ->getValue();
-    
-foreach($fe as $r=>$p){
-echo $r;
-    
+$data = array( 
+    array("NAME" => "John Doe", "EMAIL" => "john.doe@gmail.com", "GENDER" => "Male", "COUNTRY" => "United States"), 
+    array("NAME" => "Gary Riley", "EMAIL" => "gary@hotmail.com", "GENDER" => "Male", "COUNTRY" => "United Kingdom"), 
+    array("NAME" => "Edward Siu", "EMAIL" => "siu.edward@gmail.com", "GENDER" => "Male", "COUNTRY" => "Switzerland"), 
+    array("NAME" => "Betty Simons", "EMAIL" => "simons@example.com", "GENDER" => "Female", "COUNTRY" => "Australia"), 
+    array("NAME" => "Frances Lieberman", "EMAIL" => "lieberman@gmail.com", "GENDER" => "Female", "COUNTRY" => "United Kingdom") 
+);
+
+function filterData(&$str){ 
+    $str = preg_replace("/\t/", "\\t", $str); 
+    $str = preg_replace("/\r?\n/", "\\n", $str); 
+    if(strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"'; 
 }
+// Excel file name for download 
+$fileName = "codexworld_export_data-" . date('Ymd') . ".xls"; 
+ 
+// Headers for download 
+header("Content-Disposition: attachment; filename=\"$fileName\""); 
+header("Content-Type: application/vnd.ms-excel"); 
+ 
+$flag = false; 
+foreach($data as $row) { 
+    if(!$flag) { 
+        // display column names as first row 
+        echo implode("\t", array_keys($row)) . "\n"; 
+        $flag = true; 
+    } 
+    // filter data 
+    array_walk($row, 'filterData'); 
+    echo implode("\t", array_values($row)) . "\n"; 
+} 
+ 
+exit;
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<title></title>
-</head>
-<body>
-<div class="sf_coursehead">
-    Upload FileList <a href="#" class="addnew">+ Add New</a> 
-           <input type="file" id="upload_input" name="courseAgenda"  />
-  </div>
-<table id="list_files">
-  <tr>
-    <td><td>
-  </tr>
-</table>
-</body>
-</html>
-<script type="text/javascript">
-	
-
-  $(document).ready(function() {
-
- 
-  $("#upload_input").change(function() {  
-
-     var file_name=$("#upload_input").val(); 
-     $("#list_files").append("`<tr><td>`"+file_name+"`</td></tr>`"); 
-
- 
-
- }); });
- 
- </script>
-</script>
