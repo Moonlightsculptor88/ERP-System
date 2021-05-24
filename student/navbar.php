@@ -171,8 +171,6 @@ nav ul li a:hover{
                <div class="menu">
                   <ul>
                      <li><a href="#">Home</a></li>
-                     <li><a href="#">About</a></li>
-                     <li><a href="#">Blog</a></li>
                      <li><a  href="lor-page.php"> Request LOR</a></li>
                      <li><a href="#">Contact</a></li>
                      <li><a href="../logout.php">Logout</a></li>

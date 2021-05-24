@@ -279,7 +279,7 @@ ul{
 
 
 .basic-deets{
-  padding:3% 15%;
+  padding:5% 15%;
 }
 
 .text-deets{
@@ -311,7 +311,7 @@ ul{
 
 .internship-deets{
   text-align: center;
-  background-color: #d4fcff;
+  background-color: #f8f8f8;
   padding:3% 15%;
 }
 
@@ -322,7 +322,7 @@ ul{
 }
 
 .add-internship-btn{
-  background-color:#c0fdff ;
+  background-color:#ffffff ;
   font-size: 22px;
 }
 
@@ -352,6 +352,15 @@ ul{
   padding: 0vh 1vh;
 }
 
+.internship-info a{
+  text-decoration:none;
+  color: rgb(255, 122, 14);
+  transition: 1s ease-in-out;
+}
+
+.internship-info a:hover {
+  text-decoration: underline;
+}
 
 .project-deets{
   text-align: center;
