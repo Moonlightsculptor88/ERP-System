@@ -12,11 +12,9 @@ if(isset($_POST["action"]))
 $ref2="student/";
  //echo $ref2;
     $fetchdata2=$database->getReference($ref2)->getValue();
-    foreach($fetchdata2 as $key1=>$row){
-      $ref3="branch/".$row['branch']."/";
- //echo $ref2;
-    $fetchdata3=$database->getReference($ref3)->getValue();
-    $query="action='fetch_data'";
+    $obj = json_decode(json_encode($fetchdata2),true);
+    foreach($obj as $key1=>$row){
+      
 if(isset($_POST["section"]) && $_POST["section"]!="all" && $_POST["section"]!="Section")
 	{
 

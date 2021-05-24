@@ -104,10 +104,9 @@ while($y>2000){
 $ref2="student/";
  //echo $ref2;
     $fetchdata2=$database->getReference($ref2)->getValue();
-    foreach($fetchdata2 as $key1=>$row){
-      $ref3="branch/".$row['branch']."/";
- //echo $ref2;
-    $fetchdata3=$database->getReference($ref3)->getValue();
+    $obj = json_decode(json_encode($fetchdata2),true);
+    foreach($obj as $key1=>$row){
+      
       ?>
             <div class="col-lg-6  panel-pad-10">
                 <div class="panel panel-default">
@@ -210,11 +209,14 @@ if($('#batch option:selected').val() !="Batch"){
   });
 
 $('.branch').change(function(){
-if($('#branch option:selected').val() !="Branch"){
+if($('#branch option:selected').val() !="Branch" && $('#branch option:selected').val() !="all"  ){
   $('#section').removeAttr("disabled");
+}else{
+  $("#section").prop('disabled','true');
 }
   });
 
     });
+
 
 </script>

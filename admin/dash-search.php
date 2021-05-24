@@ -23,16 +23,14 @@ if(isset($_POST["action"]))
 $ref2="student/";
  //echo $ref2;
     $fetchdata2=$database->getReference($ref2)->getValue();
-    foreach($fetchdata2 as $key1=>$row){
-      $ref4="student/".$key1."/";
+    $obj = json_decode(json_encode($fetchdata2),true);
+    foreach($obj as $key1=>$row){
+      /*$ref4="student/".$key1."/";
 $fetchdata4=$database->getReference($ref4)->getSnapshot();
+*/
+if(isset($row[$_POST['category']])){
 
-if($fetchdata4->hasChild($_POST["category"])){
-
-      $ref3="branch/".$row['branch']."/";
-
-    $fetchdata3=$database->getReference($ref3)->getValue();
-    $query="action='fetch_data'";
+    
 if(isset($_POST["section"]) && $_POST["section"]!="all" && $_POST["section"]!="Section")
 	{
 
