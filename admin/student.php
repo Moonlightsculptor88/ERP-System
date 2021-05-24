@@ -213,6 +213,8 @@ if($('#branch option:selected').val() !="Branch" && $('#branch option:selected')
   $('#section').removeAttr("disabled");
 }else{
   $("#section").prop('disabled','true');
+
+  
 }
   });
 
