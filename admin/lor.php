@@ -63,10 +63,10 @@ require_once 'navbar.php';
     </div>
     <div class="d-flex w-100 justify-content-between">
     
-    <h6 class="mb-1"><?php echo $row['info'];?></h6>
+    <p class="mb-1"><?php echo $row['info'];?></p>
 
 
-     <button class="btn btn-primary" onclick="location.href='../teacher/lor/<?php echo $row['lor'];?>'" >View LOR </button>
+     <button class="btn btn-outline-primary" onclick="location.href='../teacher/lor/<?php echo $row['lor'];?>'" >View LOR </button>
      
       
   </div>

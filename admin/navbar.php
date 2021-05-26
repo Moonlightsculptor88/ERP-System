@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+<nav class="navbar navbar-expand-lg ">
   <span id="open" style="font-size:30px;cursor:pointer;color:white;margin-left:5px;" onclick="openNav()">&#9776; </span>
   <div class="container-fluid">
       
