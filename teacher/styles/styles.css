@@ -114,6 +114,21 @@ table{
 }
 
 
+
+.my-card
+{
+  position:absolute;
+  left:43%;
+  top:-20px;
+  border-radius:50%;
+}
+
+.jumbotron{
+  margin-top: 15vh;
+  padding: 3%;
+}
+
+
 /* Recently visited */
 
 .recent{

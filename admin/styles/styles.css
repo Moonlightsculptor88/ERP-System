@@ -1,7 +1,7 @@
 #loading
 {
  text-align:center; 
- background: url('loader.gif') no-repeat center; 
+
  height: 150px;
 }
 body {
@@ -53,6 +53,9 @@ body {
 
 @media only screen and (max-width: 600px) {
     .search-bar{
+        display: none;
+    }
+    .student-img{
         display: none;
     }
   }
@@ -141,6 +144,21 @@ body {
     text-shadow: 10px 10px 15px white;
     text-transform: uppercase;
 }
+
+
+.my-card
+{
+    position:absolute;
+    left:43%;
+    top:-20px;
+    border-radius:50%;
+}
+
+.jumbotron{
+    margin-top: 15vh;
+    padding: 3%;
+}
+
 
 
 
