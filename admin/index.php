@@ -45,28 +45,57 @@ require_once 'navbar.php';
               <div class="card border-info mx-sm-1 p-3">
                   <div class="card border-info shadow text-info p-3 my-card" ><span class="fa fa-car" aria-hidden="true"></span></div>
                   <div class="text-info text-center mt-3"><h4>Total Students</h4></div>
-                  <div class="text-info text-center mt-2"><h1>234</h1></div>
+                  <div class="text-info text-center mt-2"><h1>
+                    <?php $ref2="student/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getSnapshot()->numChildren();
+echo  $fetchdata2;
+?>
+                  </h1></div>
               </div>
           </div>
           <div class="col-md-3">
               <div class="card border-success mx-sm-1 p-3">
                   <div class="card border-success shadow text-success p-3 my-card"><span class="fa fa-eye" aria-hidden="true"></span></div>
-                  <div class="text-success text-center mt-3"><h4>Kuch bhi</h4></div>
-                  <div class="text-success text-center mt-2"><h1>9332</h1></div>
+                  <div class="text-success text-center mt-3"><h4>Total Teachers</h4></div>
+                  <div class="text-success text-center mt-2"><h1>
+                    <?php $ref2="teacher/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref2)->getSnapshot()->numChildren();
+echo  $fetchdata2;
+?></h1></div>
               </div>
           </div>
           <div class="col-md-3">
               <div class="card border-danger mx-sm-1 p-3">
                   <div class="card border-danger shadow text-danger p-3 my-card" ><span class="fa fa-heart" aria-hidden="true"></span></div>
-                  <div class="text-danger text-center mt-3"><h4>Kuch bhi </h4></div>
-                  <div class="text-danger text-center mt-2"><h1>346</h1></div>
+                  <div class="text-danger text-center mt-3"><h4>Lor's issued </h4></div>
+                  <div class="text-danger text-center mt-2"><h1><?php $ref2="request/";
+                  $i=0;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+    foreach($fetchdata2 as $key1=>$row){
+      if($row['flag']==1){
+$i++;
+      }
+    }
+    echo $i;
+?></h1></div>
               </div>
           </div>
           <div class="col-md-3">
               <div class="card border-warning mx-sm-1 p-3">
                   <div class="card border-warning shadow text-warning p-3 my-card" ><span class="fa fa-inbox" aria-hidden="true"></span></div>
-                  <div class="text-warning text-center mt-3"><h4>Kuch bhi</h4></div>
-                  <div class="text-warning text-center mt-2"><h1>346</h1></div>
+                  <div class="text-warning text-center mt-3"><h4>Lor's Pending</h4></div>
+                  <div class="text-warning text-center mt-2"><h1><?php $ref2="request/";
+                  $i=0;
+    $fetchdata2=$database->getReference($ref2)->getValue();
+    foreach($fetchdata2 as $key1=>$row){
+      if($row['flag']==0){
+$i++;
+      }
+    }
+    echo $i;
+?></h1></div>
               </div>
           </div>
       </div>
