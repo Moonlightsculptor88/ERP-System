@@ -6,7 +6,7 @@
   </button>
   <div class="dropdown-container">
     <a href="student.php">Student Details</a>
-    <a href="dashboard.php">Internship/projects Details</a>
+    <a href="table.php">Internship/projects Details</a>
     <a href="lor.php">LOR</a>
   </div>
   <button class="dropdown-btn">Lecturer

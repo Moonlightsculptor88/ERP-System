@@ -5,26 +5,12 @@
     <i class="fa fa-caret-down"></i>
   </button>
   <div class="dropdown-container">
-    <a href="#">Student Details</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+    <a href="student.php">Student Details</a>
+    <a href="student-add.php">Add Student</a>
+    <a href="lor-req.php">Lor Requests</a>
   </div>
-  <button class="dropdown-btn">Lecturer
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
-  <button class="dropdown-btn">Client
-    <i class="fa fa-caret-down"></i>
-  </button>
-  <div class="dropdown-container">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
-  </div>
+  
+  
   
 </div>
 
