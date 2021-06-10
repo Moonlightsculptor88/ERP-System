@@ -310,7 +310,7 @@ require_once 'navbar.php';
 
         <div class="col-lg-6 img-deets">
           <img class="profile-img" src="./img/person.png" alt="">
-          <button class="btn btn-outline-danger password">Change Password</button>
+          <button onclick="location.href='changepass.php'" class="btn btn-outline-danger password">Change Password</button>
         </div>
 
       </div>

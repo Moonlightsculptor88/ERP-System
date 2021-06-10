@@ -20,7 +20,7 @@ foreach ($fetchdata as $key => $row) {
 $ref1="student/";
     $fetchdata1=$database->getReference($ref1)->getValue();
     foreach ($fetchdata1 as $key => $row) {
-    if($_POST['email']==str_replace(' ', '',$row['reg'])&& $_POST['Password']==$row['dob']){
+    if($_POST['email']==str_replace(' ', '',$row['reg'])&& $_POST['Password']==$row['password']){
         $_SESSION['id']=$key;
         $_SESSION['type']=1;
         header('Location:student/index.php');
@@ -31,7 +31,7 @@ $ref1="student/";
 $ref1="teacher/";
     $fetchdata2=$database->getReference($ref1)->getValue();
     foreach ($fetchdata2 as $key => $row) {
-    if($_POST['email']==str_replace(' ', '',$row['email']) && $_POST['Password']==$row['dob']){
+    if($_POST['email']==str_replace(' ', '',$row['email']) && $_POST['Password']==$row['password']){
         $_SESSION['id']=$key;
         $_SESSION['type']=2;
         header('Location:teacher/index.php');

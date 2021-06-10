@@ -38,6 +38,7 @@ $data=[
   'name'=>$name,
   'email'=>$email,
   'dob'=>$dob,
+  'password'=>$dob,
   'batch'=>$batch,
   'branch'=>$branch,
   'section'=>$section,
@@ -100,6 +101,7 @@ if($flag==0){
                         'batch' => $batch,
                         'branch' => $fetchdata['branch'],
                         'dob' => $dob,
+                        'password' => $dob,
                         'section' => $section,
                         'email' => $email,
                         'teacher_id'=>$_SESSION['id']

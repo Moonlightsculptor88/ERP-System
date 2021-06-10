@@ -31,6 +31,7 @@ $data=[
   'name'=>$name,
   'email'=>$email,
   'dob'=>$dob,
+  'password'=>$dob,
   'branch'=>$dept,
   'mobile'=>$phone
 ];
@@ -86,6 +87,7 @@ if($flag==0){
                         'name'=>$name,
                         'email'=>$email,
                         'dob'=>$dob,
+                        'password'=>$dob,
                         'branch'=>$dept,
                         'mobile'=>$phone
                         ]
