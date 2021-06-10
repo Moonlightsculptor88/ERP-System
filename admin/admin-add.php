@@ -8,6 +8,19 @@ use Kreait\Firebase;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 if (isset($_POST['add'])) {
+  $ref25="teacher/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref25)->getValue();
+    $obj = json_decode(json_encode($fetchdata2),true);
+     $flag1=0;
+foreach($obj as $key1=>$row){
+
+  if($row['email']==$_POST['email']){
+    $flag1=1;
+    break;
+  }
+}
+if($flag1==0){
   $name=$_POST['name'];
   $email=$_POST['email'];
   $dob=$_POST['dob'];
@@ -28,6 +41,10 @@ if ($postdata) {
   echo "<script>alert('Data Inserted')</script>";
 }
 }
+else{
+  echo "<script>alert('Duplicate Data')</script>";
+}
+}
 if (isset($_POST['import'])) {
   if (isset($_FILES['fileimport'])) {
 
@@ -42,9 +59,22 @@ if (isset($_POST['import'])) {
                 
                 
                 $count = $data->rowcount(0);
-                
+                $ref25="teacher/";
+ //echo $ref2;
+    $fetchdata2=$database->getReference($ref25)->getValue();
+    $obj = json_decode(json_encode($fetchdata2),true);
+    
                 for ($i=2; $i<=$count; $i++) {
                     if(strlen($data->val($i, 1, 0))>2 && strlen($data->val($i, 2, 0))>2){
+                      $flag=0;
+foreach($obj as $key1=>$row){
+
+  if($row['email']==$data->val($i, 2, 0)){
+    $flag=1;
+    break;
+  }
+}
+if($flag==0){
                     $name    = $data->val($i, 1, 0);
                     $email  = $data->val($i, 2, 0);
                     $dob  = $data->val($i, 3, 0);
@@ -60,8 +90,9 @@ if (isset($_POST['import'])) {
                         'mobile'=>$phone
                         ]
                     );
-                }
+               } 
               }
+            }
     
                 unlink($_FILES['fileimport']['name']);
             }

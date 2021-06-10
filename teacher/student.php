@@ -85,7 +85,7 @@ $ref2="student/";
 
      
     
-            <nav aria-label="Page navigation example">
+            <!--<nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item ">
       <a class="page-link" href="#" aria-label="Previous">
@@ -104,6 +104,7 @@ $ref2="student/";
     </li>
   </ul>
 </nav>
+-->
             
         
     

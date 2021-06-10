@@ -10,7 +10,21 @@ $ref2="student/".$_SESSION['id']."/";
 $ref3="branch/".$fetchdata2['branch']."/";
  //echo $ref2;
     $fetchdata3=$database->getReference($ref3)->getValue();
+if(isset($_POST['deli'])){
+  $ref="student/".$_SESSION['id']."/internship/".$_POST['id'];
+$postdata = $database->getReference($ref)->remove();
 
+}
+if(isset($_POST['delp'])){
+  $ref="student/".$_SESSION['id']."/projects/".$_POST['id'];
+$postdata = $database->getReference($ref)->remove();
+
+}
+if(isset($_POST['delc'])){
+  $ref="student/".$_SESSION['id']."/certificates/".$_POST['id'];
+$postdata = $database->getReference($ref)->remove();
+
+}
     if(isset($_POST['add'])){
       if(isset($_POST['curr']) && $_POST['curr']=="yes"){
         $end="current";
@@ -492,7 +506,7 @@ if($fetchdata4->hasChild("internship")){
             <?php echo $row['company']; ?>
 
           </div>
-          <div class="col-lg-5 working-date">
+          <div class="col-lg-4 working-date">
             <?php echo $row['start']; ?>
             -
             <?php echo $row['end']; ?>
@@ -502,9 +516,20 @@ if($fetchdata4->hasChild("internship")){
           </div>
 
           <div class="col-lg-1 float-right">
+            <form method="post" >
+            <input type="hidden" name="id" value="<?php echo $key1; ?>">
+            <button type="submit" name="deli" class="btn add-internship-btn" >
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </form>
+      </div>
+
+          <div class="col-lg-1 float-right">
+
             <button type="button" class="btn add-internship-btn" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $key1; ?>">
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </button>
+
           <div class="modal fade" id="exampleModal<?php echo $key1; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
         <div class="modal-dialog">
@@ -936,7 +961,7 @@ unset($p1);
             <?php echo $row['project']; ?>
 
           </div>
-          <div class="col-lg-5 working-date">
+          <div class="col-lg-4 working-date">
             <?php echo $row['start']; ?>
             -
             <?php echo $row['end']; ?>
@@ -944,6 +969,14 @@ unset($p1);
 
 
           </div>
+          <div class="col-lg-1 float-right">
+            <form method="post" >
+            <input type="hidden" name="id" value="<?php echo $key1; ?>">
+            <button type="submit" name="delp" class="btn add-internship-btn" >
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </form>
+      </div>
           <div class="col-lg-1 float-right">
            <button type="button" class="btn add-project-btn" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $key1; ?>">
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -1332,13 +1365,21 @@ unset($p1);
         <?php echo $row['title']; ?>
 
       </div>
-      <div class="col-lg-5 working-date">
+      <div class="col-lg-4 working-date">
         <?php echo $row['start']; ?>
         -
         <?php echo $row['end']; ?>
 
 
 
+      </div>
+      <div class="col-lg-1 float-right">
+            <form method="post" >
+            <input type="hidden" name="id" value="<?php echo $key1; ?>">
+            <button type="submit" name="delc" class="btn add-internship-btn" >
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
+        </button>
+      </form>
       </div>
       <div class="col-lg-1 float-right">
         <button type="button" class="btn add-certificates-btn" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $key1; ?>">
