@@ -73,6 +73,7 @@ nav.black ul {
 nav ul li {
       display: inline-block;
       padding: 16px 40px;;
+      position: relative;
 }
 
 nav ul li a {
@@ -85,6 +86,16 @@ nav ul li a {
 nav ul li a:hover{
       color:black;
 }
+
+.lor-status-nav{
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  background-color:transparent;
+  color:#12375E;
+}
+
+
 
 .menu-icon {
       line-height: 60px;
@@ -172,7 +183,7 @@ nav ul li a:hover{
                   <ul>
                      <li><a href="index.php">Home</a></li>
                      <li><a  href="lor-page.php"> Request LOR</a></li>
-                     <li><a  href="lor_status.php">Check LOR Status</a></li>
+                     <li ><a href="lor_status.php"> <p class="lor-status-nav">2</p>Check LOR Status</a></li>
                      <li><a href="#">Contact</a></li>
                      <li><a href="../logout.php">Logout</a></li>
                   </ul>

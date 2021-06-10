@@ -310,7 +310,7 @@ require_once 'navbar.php';
 
         <div class="col-lg-6 img-deets">
           <img class="profile-img" src="./img/person.png" alt="">
-
+          <button class="btn btn-outline-danger password">Change Password</button>
         </div>
 
       </div>
@@ -973,7 +973,7 @@ unset($p1);
             <form method="post" >
             <input type="hidden" name="id" value="<?php echo $key1; ?>">
             <button type="submit" name="delp" class="btn add-internship-btn" >
-          <i class="fa fa-trash-o" aria-hidden="true"></i>
+         <div class="add-internship-button"><i class="fa fa-trash-o " aria-hidden="true"></i></div>
         </button>
       </form>
       </div>
