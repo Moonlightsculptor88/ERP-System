@@ -113,8 +113,11 @@ nav ul li a:hover{
 
 
 @keyframes blink {
+      50%{
+            transform:translateY(-20%)
+      }
       100%{
-            opacity: 0.2;
+            transform:translateY(10%)
       }
 }
 
