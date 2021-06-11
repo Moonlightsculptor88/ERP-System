@@ -7,7 +7,7 @@
   <div class="dropdown-container">
     <a href="student.php">Student Details</a>
     <a href="student-add.php">Add Student</a>
-    <a href="lor-req.php">Lor Requests</a>
+    <a class="notification"  href="lor-req.php"> <div class="lor-status-nav">2</div>Lor Requests</a>
   </div>
   
   

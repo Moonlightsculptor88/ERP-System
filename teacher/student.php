@@ -64,6 +64,8 @@ $ref2="student/";
                     </li>
                   </ul>
                   <button onclick="location.href='studentinfo.php?id=<?php echo $key1;?>'" type="button" class="btn btn-primary more-info">More Info</button>
+                  <button onclick="" type="button" class="btn btn-outline-danger more-info">Delete</button>
+
                 </div>
                   
                   <div class="student-pic">

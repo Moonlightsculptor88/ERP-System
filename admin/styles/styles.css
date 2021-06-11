@@ -21,6 +21,29 @@ body {
     background-image: url("../img/hero.png");
 }
 
+.lor-status-nav{
+  background-color:white;
+  height:15px;
+  width:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:black;
+  border-radius:50%;
+  position: absolute;
+  right:30px;
+  top: 15px;
+  font-weight:600;
+  font-family: 'Montserrat', sans-serif;
+  font-size:12px;
+  animation: blink 1s ease infinite;
+ }
+
+ .notification{
+   position: relative;
+ }
+
+
 
 @keyframes come-in {
     0%{

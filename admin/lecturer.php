@@ -60,6 +60,8 @@ $ref2="teacher/";
                     </li>
                   </ul>
                  <!-- <button type="button" class="btn btn-primary more-info">More Info</button>-->
+                 <button onclick="" type="button" class="btn btn-outline-danger more-info">Delete</button>
+
                 </div>
                   
                   <div class="student-pic">
