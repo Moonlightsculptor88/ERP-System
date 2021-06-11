@@ -518,7 +518,7 @@ if($fetchdata4->hasChild("internship")){
           <div class="col-lg-1 float-right">
             <form method="post" >
             <input type="hidden" name="id" value="<?php echo $key1; ?>">
-            <button type="submit" name="deli" class="btn add-internship-btn" >
+            <button type="submit" name="deli" class="btn add-internship-btn delete-internship-button" >
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         </button>
       </form>

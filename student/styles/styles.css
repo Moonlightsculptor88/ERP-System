@@ -424,6 +424,12 @@ ul{
   margin-bottom: 40px;
 }
 
+.delete-internship-button:hover{
+  background-color:#FF0000;
+  color: white;
+  
+}
+
 @media only screen and (max-width: 600px) {
   .small-input{
     width: 100%;

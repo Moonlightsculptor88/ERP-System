@@ -88,13 +88,35 @@ nav ul li a:hover{
 }
 
 .lor-status-nav{
-  position: absolute;
-  right: 30px;
-  top: 5px;
-  background-color:transparent;
-  color:#12375E;
+ background-color:white;
+ height:15px;
+ width:15px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ color:black;
+ border-radius:50%;
+ position: absolute;
+ right:30px;
+ top: 20px;
+ font-weight:600;
+ font-family: 'Montserrat', sans-serif;
+ font-size:12px;
+ animation: blink 1s ease infinite;
 }
 
+.notification:hover .lor-status-nav{
+      animation:none;
+      
+}
+
+
+
+@keyframes blink {
+      100%{
+            opacity: 0.2;
+      }
+}
 
 
 .menu-icon {
@@ -113,7 +135,7 @@ nav ul li a:hover{
             text-align: center;
             color: #fff;
             padding-top:17.5vh;
-
+            
       }
 
 .nav-manipal{
@@ -183,7 +205,7 @@ nav ul li a:hover{
                   <ul>
                      <li><a href="index.php">Home</a></li>
                      <li><a  href="lor-page.php"> Request LOR</a></li>
-                     <li ><a href="lor_status.php"> <p class="lor-status-nav">2</p>Check LOR Status</a></li>
+                     <li class="notification" ><div class="lor-status-nav">2</div> <a href="lor_status.php"> Check LOR Status</a></li>
                      <li><a href="#">Contact</a></li>
                      <li><a href="../logout.php">Logout</a></li>
                   </ul>
