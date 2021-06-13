@@ -156,7 +156,7 @@ table{
   font-family: 'Times New Roman', Times, serif;
   font-size: 18px;
   margin: auto;
-  height: 240px;
+ border-radius:10px;
 }
 
 
@@ -169,6 +169,12 @@ table{
   margin: auto;
   padding: 10px;
   display: flex;
+ border-radius:10px;
+
+}
+
+.student-card div form{
+  display: inline;
 }
 
 .card-text{
