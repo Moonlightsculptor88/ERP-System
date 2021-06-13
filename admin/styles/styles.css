@@ -19,6 +19,7 @@ body {
 
 .navbar{
     background-image: url("../img/hero.png");
+    background-size: contain;
 }
 
 .lor-status-nav{
@@ -155,16 +156,17 @@ body {
   /*Home Page*/
 .hero{
     background-image: url("../img/hero.png");
-    height: 30vh;
+    height: 40vh;
     text-align: center;
+    background-size: contain;
 }
 
 .hero h1{
    color: white;
-    font-family: 'Merriweather', serif;
+    font-family: 'Merriweather', sans-serif;
     line-height: 30vh;
     font-size: 3.5em;
-    text-shadow: 10px 10px 15px white;
+    text-shadow: 2px 2px 5px white;
     text-transform: uppercase;
 }
 
