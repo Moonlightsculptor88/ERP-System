@@ -25,6 +25,11 @@ if(isset($_POST['delc'])){
 $postdata = $database->getReference($ref)->remove();
 
 }
+if(isset($_POST['delac'])){
+  $ref="student/".$_SESSION['id']."/achievements/".$_POST['id'];
+$postdata = $database->getReference($ref)->remove();
+
+}
     if(isset($_POST['add'])){
       if(isset($_POST['curr']) && $_POST['curr']=="yes"){
         $end="current";
@@ -132,6 +137,28 @@ $postdata = $database->getReference($ref)->push($data);
       
     }
     
+    if(isset($_POST['add-ach'])){
+      
+
+      
+
+      $data=[
+  'title'=>$_POST['title'],
+  'issued-by'=>$_POST['asso'],
+  'type'=>$_POST['type'],
+  'details'=>$_POST['details'],
+  'start'=>$_POST['start-month-ach'].",".$_POST['start-year-ach']
+  
+];
+      /*$ref4="student/".$_SESSION['id']."/";
+$fetchdata4=$database->getReference($ref4)->getSnapshot();*/
+        $ref="student/".$_SESSION['id']."/achievements";
+$postdata = $database->getReference($ref)->push($data);
+      
+      
+    }
+    
+
    if(isset($_POST['edit-intern'])){
       if(isset($_POST['curr']) && $_POST['curr']=="yes"){
         $end="current";
@@ -228,6 +255,25 @@ $postdata = $database->getReference($ref)->update($data);
       
       
     }
+
+    if(isset($_POST['edit-ach'])){
+      
+      $data=[
+  'title'=>$_POST['title'],
+  'issued-by'=>$_POST['asso'],
+  'type'=>$_POST['type'],
+  'details'=>$_POST['details'],
+  'start'=>$_POST['start-month-ach'].",".$_POST['start-year-ach']
+  
+];
+      /*$ref4="student/".$_SESSION['id']."/";
+$fetchdata4=$database->getReference($ref4)->getSnapshot();*/
+        $ref="student/".$_SESSION['id']."/achievements/".$_POST['id']."/";
+$postdata = $database->getReference($ref)->update($data);
+      
+      
+    } 
+
 
     if(isset($_POST['edit-offer'])){
 $uniquesavename=time().uniqid(rand());
@@ -1581,6 +1627,299 @@ $y--;
 
 
 </section>
+
+  <section id="Achievements">
+
+
+
+    <div class="container-fluid project-deets">
+
+
+      <h1>Achievements 
+        <!-- Button trigger modal -->
+        <button type="button" class="btn add-project-btn" data-bs-toggle="modal" data-bs-target="#exampleModala">
+          +
+        </button>
+
+      </h1>
+
+
+
+
+      <div class="modal fade" id="exampleModala" tabindex="-1" aria-labelledby="exampleModalLabela" aria-hidden="true">
+
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabela">Enter Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+              <div class="modal-body">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Title</span>
+                  <input required type="text" name="title" class="form-control" placeholder=""
+                    aria-label="company-name" aria-describedby="basic-addon1">
+                </div>
+<div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"> Type </span>
+                  <select name="type" class="form-control" aria-label="start" aria-describedby="basic-addon1">
+                    <option>University Level</option>
+                    <option>State Level</option>
+                    <option>District Level</option>
+                    <option>National Level</option>
+                    <option>International Level</option>
+                  </select>
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"> Date </span>
+                  <select name="start-month-ach" class="form-control" aria-label="start" aria-describedby="basic-addon1">
+                    <option value="January">January
+                    </option>
+                    <option value="February">February
+                    </option>
+                    <option value="March">March
+                    </option>
+                    <option value="April">April
+                    </option>
+                    <option value="May">May
+                    </option>
+                    <option value="June">June
+                    </option>
+                    <option value="July">July
+                    </option>
+                    <option value="August">August
+                    </option>
+                    <option value="September">September
+                    </option>
+                    <option value="October">October
+                    </option>
+                    <option value="November">November
+                    </option>
+                    <option value="December">December
+                    </option>
+                  </select>
+                  <select name="start-year-ach" class="form-control" aria-label="end" aria-describedby="basic-addon1">
+                    <?php 
+$y=date("Y");
+//echo $y;
+while($y>2000){
+?>
+                    <option value="<?php echo $y; ?>"><?php echo $y; ?></option>
+                    <?php
+$y--;
+}
+?>
+
+                  </select>
+                </div>
+                
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Associated With</span>
+                  <input name="asso" type="text" class="form-control" placeholder="" aria-label="Associated With"
+                    aria-describedby="basic-addon1">
+                </div>
+
+                
+
+                <div class="input-group">
+                  <span class="input-group-text">Details</span>
+                  <textarea rows="5" cols="40" name="details" class="form-control" aria-label="details" maxlength="200"></textarea>
+                </div>
+
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" name="add-ach" class="btn btn-primary">Add</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+
+      <?php
+$ref7="student/".$_SESSION['id']."/";
+$fetchdata7=$database->getReference($ref7)->getSnapshot();
+
+if($fetchdata7->hasChild("achievements")){
+$ref8="student/".$_SESSION['id']."/achievements/";
+$fetchdata8=$database->getReference($ref8)->getValue();
+foreach($fetchdata8 as $key1=>$row){
+$str = $row['start'];
+unset($p1);
+      $p=array();
+ $p=(explode(",",$str));
+    
+
+?>
+      <div class="full-internship-deets">
+        <div class="row basic-internship-deets">
+          <div class="col-lg-6 company-name">
+            <?php echo $row['title']; ?>
+
+          </div>
+          <div class="col-lg-4 working-date">
+            <?php echo $row['start']; ?>
+            
+
+
+          </div>
+          <div class="col-lg-1 float-right">
+            <form method="post" >
+            <input type="hidden" name="id" value="<?php echo $key1; ?>">
+            <button type="submit" name="delac" class="btn add-internship-btn" >
+         <div class="add-internship-button"><i class="fa fa-trash-o " aria-hidden="true"></i></div>
+        </button>
+      </form>
+      </div>
+          <div class="col-lg-1 float-right">
+           <button type="button" class="btn add-project-btn" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $key1; ?>">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+        </button> 
+          <div class="modal fade" id="exampleModal<?php echo $key1; ?>" tabindex="-1" aria-labelledby="exampleModalLabel<?php echo $key1; ?>" aria-hidden="true">
+
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">Edit Achievement</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post">
+              <div class="modal-body">
+                <input type="hidden" name="id" value="<?php echo $key1; ?>">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Title</span>
+                  <input value="<?php echo $row['title']; ?>" required type="text" name="title" class="form-control" placeholder=""
+                    aria-label="company-name" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Start Date </span>
+                  <select name="start-month-ach" class="form-control" aria-label="start" aria-describedby="basic-addon1">
+                    <option <?php if($p[0]=="January") echo "selected";?> value="January">January
+                    </option>
+                    <option <?php if($p[0]=="February") echo "selected";?> value="February">February
+                    </option>
+                    <option <?php if($p[0]=="March") echo "selected";?> value="March">March
+                    </option>
+                    <option <?php if($p[0]=="April") echo "selected";?> value="April">April
+                    </option>
+                    <option <?php if($p[0]=="May") echo "selected";?> value="May">May
+                    </option>
+                    <option <?php if($p[0]=="June") echo "selected";?> value="June">June
+                    </option>
+                    <option <?php if($p[0]=="July") echo "selected";?> value="July">July
+                    </option>
+                    <option <?php if($p[0]=="August") echo "selected";?> value="August">August
+                    </option>
+                    <option <?php if($p[0]=="September") echo "selected";?> value="September">September
+                    </option>
+                    <option <?php if($p[0]=="October") echo "selected";?> value="October">October
+                    </option>
+                    <option <?php if($p[0]=="November") echo "selected";?> value="November">November
+                    </option>
+                    <option <?php if($p[0]=="December") echo "selected";?> value="December">December
+                    </option>
+                  </select>
+                  <select name="start-year-ach" class="form-control" aria-label="end" aria-describedby="basic-addon1">
+                    <?php 
+$y=date("Y");
+//echo $y;
+while($y>2000){
+?>
+                    <option <?php if($p[1]==$y) echo "selected";?> value="<?php echo $y; ?>"><?php echo $y; ?></option>
+                    <?php
+$y--;
+}
+?>
+
+                  </select>
+                </div>
+                
+                
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Associated With</span>
+                  <input value="<?php echo $row['issued-by']; ?>" name="asso" type="text" class="form-control" placeholder="" aria-label="Associated With"
+                    aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Type</span>
+                  <select name="type" class="form-control" aria-label="end" aria-describedby="basic-addon1">
+                   <option <?php if($row['type']=="University Level"){echo "selected";}?>>University Level</option>
+                    <option <?php if($row['type']=="State Level"){echo "selected";}?>>State Level</option>
+                    <option <?php if($row['type']=="District Level"){echo "selected";}?>>District Level</option>
+                    <option <?php if($row['type']=="National Level"){echo "selected";}?>>National Level</option>
+                    <option <?php if($row['type']=="International Level"){echo "selected";}?>>International Level</option>
+                    
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <span class="input-group-text">Details</span>
+                  <textarea name="details" class="form-control" aria-label="details"><?php echo $row['details']; ?></textarea>
+                </div>
+
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" name="edit-ach" class="btn btn-primary">Edit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+          </div>
+
+          <div class="col-lg-6 working-role">
+            <?php echo $row['issued-by']; ?>
+
+           
+
+
+          </div>
+
+          <div class="col-lg-12 project-url">
+            
+            <p>
+              <?php echo $row['type']; ?>
+            </p>
+
+
+          </div>
+        </div>
+
+        <div class="internship-info">
+          <p><?php echo $row['details']; ?>
+          </p>
+
+        </div>
+      </div>
+      <?php
+
+}
+}
+?>
+
+    </div>
+
+
+
+    <div>
+
+    </div>
+
+
+  </section>
 
 
 

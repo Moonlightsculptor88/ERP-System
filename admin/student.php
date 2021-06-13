@@ -138,7 +138,7 @@ $ref2="student/";
             <input type="hidden" name="id" value="<?php echo $key1; ?>">
             <button name="del" type="submit" class="btn btn-outline-danger more-info">Delete</button>
       </form>
-                  >
+                  
 
                 </div>
 

@@ -18,11 +18,12 @@ if (move_uploaded_file($tempname, $folder)) {
 }
 $flag=1;
 $date=date("Y-m-d");
-
+$noti=1;
   $data=[
   'lor'=>$filename,
   'flag'=>$flag,
   'issue_date'=>$date,
+  'noti'=>$noti
   'remarks'=>$remarks
 ];
 $ref="request/".$id;

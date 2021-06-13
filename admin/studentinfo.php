@@ -302,6 +302,77 @@ foreach($fetchdata9 as $key1=>$row){
 
 
 </section>
+<section id="Achievements">
+
+
+
+    <div class="container-fluid project-deets">
+
+
+      <h4>Achievements
+        <!-- Button trigger modal -->
+        
+
+      </h4>
+      <?php
+$ref7="student/".$_GET['id']."/";
+$fetchdata7=$database->getReference($ref7)->getSnapshot();
+
+if($fetchdata7->hasChild("achievements")){
+$ref8="student/".$_GET['id']."/achievements/";
+$fetchdata8=$database->getReference($ref8)->getValue();
+foreach($fetchdata8 as $key1=>$row){
+  ?>
+      <div class="full-internship-deets">
+        <div class="row basic-internship-deets">
+          <div class="col-lg-6 company-name">
+           <?php echo $row['title']; ?>
+
+          </div>
+          <div class="col-lg-5 working-date">
+            <?php echo $row['start']; ?>
+            
+
+
+          </div>
+          
+
+          <div class="col-lg-6 working-role">
+            <?php echo $row['issued-by']; ?>
+
+           
+
+
+          </div>
+
+          <div class="col-lg-12 project-url">
+            
+            <p><?php echo $row['type']; ?></p>
+
+          </div>
+        </div>
+
+        <div class="internship-info">
+          <p><?php echo $row['details']; ?>
+          </p>
+        </div>
+      </div>
+<?php
+}
+}else{
+  echo "None";
+}
+?>
+    </div>
+
+
+
+    <div>
+
+    </div>
+
+
+  </section>
 
   </div>
 </div>

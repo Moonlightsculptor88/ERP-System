@@ -3,6 +3,24 @@ session_start();
 require_once '../includes/config.php';
 require_once 'session.php';
 
+$ref1="request/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    $i=0;
+    foreach ($fetchdata as $key => $row) {
+      if($row['student_id']==$_SESSION['id'] ){
+
+        $data=[
+  
+  'noti'=>0
+  
+];
+$ref="request/".$key;
+$postdata = $database->getReference($ref)->update($data);
+
+      }
+    }
+
+
 ?>
 
 <!doctype html>
@@ -27,7 +45,7 @@ require_once 'sidebar.php';
 require_once 'navbar.php';
 ?>
 <div class="container display-list" style="padding-top:50px;">
-
+<h3>LOR Status</h3>
 <div class="list-group">
   <?php
     $ref1="request/";

@@ -30,7 +30,7 @@ $postdata1 = $database->getReference($ref2)->push($data2);
     }
   $data=[
   'student_id'=>$student,
-  'dept'=>$dept,
+   'noti'=>$flag,
   'teacher_id'=>$lect,
   'purpose'=>$purpose,
   'info'=>$info,

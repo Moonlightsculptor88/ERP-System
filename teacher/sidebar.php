@@ -7,7 +7,17 @@
   <div class="dropdown-container">
     <a href="student.php">Student Details</a>
     <a href="student-add.php">Add Student</a>
-    <a class="notification"  href="lor-req.php"> <div class="lor-status-nav">2</div>Lor Requests</a>
+    <a class="notification"  href="lor-req.php"> <div class="lor-status-nav"><?php 
+                        $ref1="request/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    $b=0;
+    foreach ($fetchdata as $key => $row) {
+
+      if($row['teacher_id']==$_SESSION['id'] && $row['flag']==0){
+        $b++;
+      } }
+      echo $b;
+                        ?></div>Lor Requests</a>
   </div>
   
   

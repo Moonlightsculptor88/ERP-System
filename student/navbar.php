@@ -208,7 +208,19 @@ nav ul li a:hover{
                   <ul>
                      <li><a href="index.php">Home</a></li>
                      <li><a  href="lor-page.php"> Request LOR</a></li>
-                     <li class="notification" ><div class="lor-status-nav">2</div> <a href="lor_status.php"> Check LOR Status</a></li>
+                     <li class="notification" ><div class="lor-status-nav"><?php
+$ref1="request/";
+    $fetchdata=$database->getReference($ref1)->getValue();
+    $i=0;
+    if($fetchdata){
+    foreach ($fetchdata as $key => $row) {
+      if($row['student_id']==$_SESSION['id'] && $row['noti']==1 ){
+            $i++;
+      }
+    }}
+    echo $i;
+
+                      ?></div> <a href="lor_status.php"> Check LOR Status</a></li>
                      <li><a href="#">Contact</a></li>
                      <li><a href="../logout.php">Logout</a></li>
                   </ul>

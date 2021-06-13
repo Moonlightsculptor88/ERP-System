@@ -55,6 +55,7 @@ require_once 'navbar.php';
   <option value="internship">Internship</option>
   <option value="certificates">Certificate</option>
   <option value="projects">Project</option>
+  <option value="achievements">Achievements</option>
 </select>
 </div>
 <div>

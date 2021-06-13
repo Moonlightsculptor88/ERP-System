@@ -7,8 +7,10 @@ if (isset($_POST['update'])) {
   $reason=$_POST['reason'];
   $id=$_GET['id'];
   $flag=2;
+  $noti=1;
   $data=[
   'flag'=>$flag,
+  'noti'=>$noti,
   'reason'=>$reason
 ];
 $ref="request/".$id;
