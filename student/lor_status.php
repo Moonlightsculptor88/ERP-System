@@ -44,8 +44,10 @@ require_once 'sidebar.php';
 <?php
 require_once 'navbar.php';
 ?>
+<div style=" margin: auto; width: max-content; "><h3>LOR Status</h3></div>
 <div class="container display-list" style="padding-top:50px;">
-<h3>LOR Status</h3>
+
+
 <div class="list-group">
   <?php
     $ref1="request/";
