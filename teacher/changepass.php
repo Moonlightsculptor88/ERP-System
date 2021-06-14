@@ -36,14 +36,17 @@ echo "<script>alert('Password Updated')</script>";
     <title>ERP System</title>
   </head>
   <body>
- 
+ <?php
+require_once 'sidebar.php';
+?>
+
 <div id="full-page">
 <?php
 require_once 'navbar.php';
 ?>
 
 <div class="container add-container">
-<h3 class="add-heading">Enter Details</h3>
+<h3 class="add-heading">Change Passoword</h3>
 <form method="post" >
   
 

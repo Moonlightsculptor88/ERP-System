@@ -7,7 +7,7 @@
     <form class="d-flex ">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success nav-btn btn-light" type="submit">Search</button>
-        <button class="btn btn-outline-danger nav-btn btn-light" type="submit">Forgot Password</button>
+        <button  onclick="location.href='changepass.php'" class="btn btn-outline-danger nav-btn btn-light" type="button">Change Password</button>
         
       </form>
     <button onclick="location.href='../logout.php'" type="button" class="btn btn-outline-success nav-btn btn-light btn-outline-danger" >Logout</button>
