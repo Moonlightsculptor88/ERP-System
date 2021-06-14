@@ -159,7 +159,9 @@ table{
  border-radius:10px;
 }
 
-
+.forgot-pass{
+  width: 80%;
+}
 
 .student-card{
   position: relative;

@@ -134,9 +134,10 @@ $ref2="student/";
                     </li>
                   </ul>
                   <button onclick="location.href='studentinfo.php?id=<?php echo $key1;?>'" type="button" class="btn btn-primary more-info">More Info</button>
+                  <button name="del" type="submit" class="btn btn-outline-danger more-info">Delete</button>
                   <form method="post" >
             <input type="hidden" name="id" value="<?php echo $key1; ?>">
-            <button name="del" type="submit" class="btn btn-outline-danger more-info">Delete</button>
+            
       </form>
                   
 
